@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "636582341023",
+    "project_id": "appclothes-ec907",
+    "storage_bucket": "appclothes-ec907.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:636582341023:android:fe4d3ef76a1163b690f5aa",
+        "android_client_info": {
+          "package_name": "com.example.clothes_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjGrCCFWJ5FRsb36FdfOpnAjx9wACJG70"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
