@@ -1,13 +1,34 @@
-import 'package:clothes_app/firebase_options.dart';
-import 'package:clothes_app/View/screens/homepagescreen.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
+import 'dart:async';
 
-void main() async {
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
+import 'package:clothes_app/Helper/Log/LogApp.dart';
+import 'package:clothes_app/Helper/Service/initService.dart';
+import 'package:clothes_app/Helper/Translation/LanguageTranslation.dart';
+import 'package:clothes_app/View/screens/homepagescreen.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+Future<void> main() async {
+  await runZonedGuarded<Future<void>>(
+    () async {
+      WidgetsFlutterBinding.ensureInitialized();
+      await initService();
+      runApp(
+        const MyApp(),
+        // DevicePreview(
+        //   enabled: !kReleaseMode,
+        //   builder: (context) => const MyApp(), // Wrap your app
+        // ),
+      );
+    },
+    (
+      error,
+      stack,
+    ) =>
+        logError(
+      error.toString(),
+    ),
   );
-  runApp(const MyApp());
+  // if it's not on the web, windows or android, load the accent color
 }
 
 class MyApp extends StatelessWidget {
@@ -16,9 +37,21 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    logError('ahmed');
+    logInfo('message');
+    logSuccess('message');
+    logWarning('message');
+    return GetMaterialApp(
+      locale: Get.deviceLocale,
       debugShowCheckedModeBanner: false,
-      home: Homepagescreen(),
+      translations: Words(),
+      home: const Homepagescreen(),
+      getPages: [
+        GetPage(
+          name: '/',
+          page: () => const Homepagescreen(),
+        ),
+      ],
     );
   }
 }

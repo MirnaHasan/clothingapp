@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 
 class Homepagebody extends StatefulWidget {
@@ -12,6 +10,8 @@ class Homepagebody extends StatefulWidget {
 class _HomepagebodyState extends State<Homepagebody> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return const Column(
+      children: [],
+    );
   }
 }
