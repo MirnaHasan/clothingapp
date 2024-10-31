@@ -10,7 +10,7 @@ import 'package:get/get.dart';
 Future<void> main() async {
   await runZonedGuarded<Future<void>>(
     () async {
-      WidgetsFlutterBinding.ensureInitialized();
+    await WidgetsFlutterBinding.ensureInitialized();
       await initService();
       runApp(
         const MyApp(),

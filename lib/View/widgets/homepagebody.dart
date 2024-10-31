@@ -1,3 +1,4 @@
+import 'package:clothes_app/View/Style/ScreenSize.dart/ScreenSize.dart';
 import 'package:flutter/material.dart';
 
 class Homepagebody extends StatefulWidget {
@@ -10,8 +11,10 @@ class Homepagebody extends StatefulWidget {
 class _HomepagebodyState extends State<Homepagebody> {
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: [],
+    return Container(
+      height: context.getHeight(50),
+      width: context.getWidth(30),
+      color:Colors.red,
     );
   }
 }
