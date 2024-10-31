@@ -1,6 +1,10 @@
+import 'package:clothes_app/Helper/Log/LogApp.dart';
+import 'package:clothes_app/Helper/Translation/LanguageTranslation.dart';
 import 'package:clothes_app/View/Style/ScreenSize.dart/ScreenSize.dart';
+import 'package:clothes_app/View/Style/colorApp/colorsApp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 
 class Homepagebody extends StatefulWidget {
   const Homepagebody({super.key});
@@ -10,22 +14,22 @@ class Homepagebody extends StatefulWidget {
 }
 
 class _HomepagebodyState extends State<Homepagebody> {
+  final TextEditingController userName = TextEditingController();
+  final TextEditingController password = TextEditingController();
+  final TextEditingController email = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-    TextEditingController userName = TextEditingController();
-    TextEditingController password = TextEditingController();
-    TextEditingController email = TextEditingController();
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 98, 107, 137),
+      backgroundColor: ColorApp.background,
       body: SingleChildScrollView(
         child: Center(
           child: Padding(
             padding: const EdgeInsets.only(top: 110.0),
             child: Column(
-             
+              // mainAxisAlignment: MainAxisAlignment.spaceAround,
 
               children: [
-                
                 Text(
                   "Login",
                   style: TextStyle(
@@ -70,7 +74,7 @@ class _HomepagebodyState extends State<Homepagebody> {
                               decoration: BoxDecoration(
                                   boxShadow: [
                                     BoxShadow(
-                                     
+                                      // spreadRadius: 25,
                                       blurRadius: 25,
                                       offset: const Offset(0, 12),
                                       color:
@@ -139,16 +143,35 @@ class _HomepagebodyState extends State<Homepagebody> {
       ),
     );
   }
+}
 
-  TextFormField customTextformfield(
-      String title, TextEditingController controoler) {
+class CustomTextformfield extends StatelessWidget {
+  const CustomTextformfield({
+    super.key,
+    required this.title,
+    required this.controller,
+  });
+  final String title;
+  final TextEditingController controller;
+
+  @override
+  Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
       decoration: InputDecoration(
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(width: 1, color: ColorApp.background),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(width: 1, color: ColorApp.background),
+        ),
         label: Text(
           title,
           style: TextStyle(
               fontSize: context.getFontSize(13),
-              color: const Color.fromARGB(255, 137, 135, 135),
+              color: ColorApp.background,
               fontWeight: FontWeight.bold),
         ),
       ),
