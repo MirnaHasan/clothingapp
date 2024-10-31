@@ -1,9 +1,12 @@
-import 'dart:ui';
+
+import 'package:flutter/material.dart';
 
 class ColorApp {
   ColorApp._();
+
+
   
-static  Color black = const Color(0xFF212121);
+static  Color background = const  Color.fromARGB(255, 98, 107, 137);
 
 static Color gray = const Color(0xfff5f5f5);
 

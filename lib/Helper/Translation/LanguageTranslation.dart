@@ -2,9 +2,35 @@ import 'package:get/get.dart';
 
 class Words extends Translations {
   static const appName = 'appName';
+  static const login = 'login';
+  static const welcome = 'welcome';
+  static const register = 'register';
+  static const forgotPassword = 'forgotPassword';
+  static const userName = 'userName';
+  static const password = 'password';
+  static const email = 'email';
+
   @override
   Map<String, Map<String, String>> get keys => {
-        'ar': {appName: 'متجر ملابس'},
-        'en': {appName: "Clothes Store"},
+        'ar': {
+          appName: 'متجر ملابس',
+          login: 'تسجيل الدخول',
+          welcome: "مرحبا بك في متجر ملابس",
+          register: 'تسجيل جديد',
+          forgotPassword: 'نسيت كلمة المرور',
+          userName : 'اسم المستخدم',
+          password : 'كلمة السر',
+          email : 'البريد الالكتروني',
+        },
+        'en': {
+          appName: "Clothes Store",
+          login: 'Login',
+          welcome: "Welcome To Clothes Store",
+          register: 'Register',
+          forgotPassword: 'Forgot Password',
+          userName : 'User Name',
+          password : 'Password',
+          email : 'Email',
+        },
       };
 }
