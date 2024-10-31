@@ -22,9 +22,10 @@ class _HomepagebodyState extends State<Homepagebody> {
           child: Padding(
             padding: const EdgeInsets.only(top: 110.0),
             child: Column(
-              // mainAxisAlignment: MainAxisAlignment.spaceAround,
+             
 
               children: [
+                
                 Text(
                   "Login",
                   style: TextStyle(
@@ -69,7 +70,7 @@ class _HomepagebodyState extends State<Homepagebody> {
                               decoration: BoxDecoration(
                                   boxShadow: [
                                     BoxShadow(
-                                      // spreadRadius: 25,
+                                     
                                       blurRadius: 25,
                                       offset: const Offset(0, 12),
                                       color:
