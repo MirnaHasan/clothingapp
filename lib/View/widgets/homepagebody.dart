@@ -124,10 +124,7 @@ class _HomepagebodyState extends State<Homepagebody> {
                           borderRadius: BorderRadius.circular(18)),
                       color: ColorApp.background,
                       onPressed: () {
-                        //!
-                        logSuccess(userName.text);
-                        logSuccess(password.text);
-                        logSuccess(email.text);
+                        
                       },
                       child: Text(
                         Words.register.tr,
