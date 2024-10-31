@@ -9,13 +9,14 @@ class Homepagescreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: const [],
-        centerTitle: true,
-        title: Text(Words.appName.tr),
-        leading: const Center(child: Text('data')),
-      ),
-      backgroundColor: Colors.white,
+      // appBar: AppBar(
+      //   actions: const [],
+      //   centerTitle: true,
+      //    title: Text(Words.appName.tr),
+      //   // leading: const Center(child: Text('data')),
+      // ),
+      // backgroundColor: Colors.white,
+      backgroundColor: Color.fromARGB(255, 98, 107, 137),
       body: const Homepagebody(),
     );
   }
