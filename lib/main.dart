@@ -37,13 +37,16 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    logError('ahmed');
-    logInfo('message');
-    logSuccess('message');
-    logWarning('message');
+  
     return GetMaterialApp(
       locale: Get.deviceLocale,
       debugShowCheckedModeBanner: false,
+      title: 'Clothes App',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      fallbackLocale: const Locale('en', 'US'),
+
       translations: Words(),
       home: const Homepagescreen(),
       getPages: [
@@ -51,7 +54,9 @@ class MyApp extends StatelessWidget {
           name: '/',
           page: () => const Homepagescreen(),
         ),
+
       ],
+      
     );
   }
 }
