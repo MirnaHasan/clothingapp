@@ -92,11 +92,14 @@ class _HomepagebodyState extends State<Homepagebody> {
                                     top: 30.0, right: 10, left: 10, bottom: 30),
                                 child: Column(
                                   children: [
-                                    customTextformfield("UserName", userName),
+                                    CustomTextformfield(title:"UserName" , controller: userName),
+                                  
                                     const SizedBox(height: 10),
-                                    customTextformfield("E-mail", email),
+                                      CustomTextformfield(title:"E-mail" , controller: email),
+                                   
                                     const SizedBox(height: 10),
-                                    customTextformfield("Password", password),
+                                     CustomTextformfield(title:"Password" , controller: password),
+                                
                                     const SizedBox(height: 10),
                                   ],
                                 ),
