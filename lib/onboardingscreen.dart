@@ -26,7 +26,7 @@ class _OnboardingscreenState extends State<Onboardingscreen> {
           controller: _controller,
           onPageChanged: (index){
             setState(() {
-              onlastpage=(index==2);
+              onlastpage = (index==2);
             });
           },
           children: [
