@@ -221,7 +221,7 @@ class _HomepagebodyState extends State<Homepagebody> {
                       color: const Color.fromARGB(255, 98, 107, 137),
                       onPressed: () {},
                       child: Text(
-                        "Login",
+                        Words.login.tr,
                         style: TextStyle(
                             fontSize: context.getFontSize(16),
                             fontWeight: FontWeight.bold,

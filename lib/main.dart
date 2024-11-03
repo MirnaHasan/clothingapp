@@ -48,7 +48,9 @@ class MyApp extends StatelessWidget {
       translations: Words(),
       home: const Onboardingscreen(),
       routes: RouteApp.instance.routes,
-      initialRoute: RouteApp.homepage
+      initialRoute: shared.getBool('isOne') == true 
+      ? RouteApp.mainScreen
+       : RouteApp.onboarding, 
       
     );
   }
