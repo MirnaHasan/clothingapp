@@ -8,9 +8,9 @@ class Pagethreebody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("pagethreebody"),
+        title: const Text("pagethreebody"),
       ),
-      body: Center(child: Text("pagethreebody"),),
+      body: const Center(child: Text("pagethreebody"),),
     );
   }
 }

@@ -8,6 +8,6 @@ class Pagetwo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Pagetwobody();
+    return const Pagetwobody();
   }
 }

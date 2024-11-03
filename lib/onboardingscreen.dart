@@ -1,7 +1,4 @@
-
-
 import 'package:clothes_app/View/Style/ScreenSize.dart/ScreenSize.dart';
-import 'package:clothes_app/View/screens/homepagescreen.dart';
 import 'package:clothes_app/View/screens/pagethree.dart';
 import 'package:clothes_app/View/screens/pagetwo.dart';
 import 'package:flutter/material.dart';
@@ -16,70 +13,82 @@ class Onboardingscreen extends StatefulWidget {
 }
 
 class _OnboardingscreenState extends State<Onboardingscreen> {
-  PageController _controller=PageController();
-  bool onlastpage=false;
+  final PageController _controller = PageController();
+
+  bool onlastpage = false;
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         PageView(
           controller: _controller,
-          onPageChanged: (index){
+          onPageChanged: (index) {
             setState(() {
-              onlastpage = (index==2);
+              onlastpage = (index == 1);
             });
           },
-          children: [
-            Homepagescreen(),
+          children: const [
+            //! هنا ضيفي page one
+            // Homepagescreen(),
             Pagetwo(),
             Pagethree(),
           ],
         ),
         Container(
-          alignment: Alignment(0, 0.96),
+          alignment: const Alignment(0, 0.96),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-
-              GestureDetector(onTap: (){
-Get.to(()=>Pagetwo());
-
-              },
-              child: Text("Skip", 
-              style: TextStyle(
-                  fontSize:context.getFontSize(14.2) , 
-                  color: Colors.black,
-                ),),) , 
-              SmoothPageIndicator(controller: _controller, count: 3),
-
-              onlastpage?
               GestureDetector(
-                onTap: (){
-                  Get.to(()=>Pagethree());
+                onTap: () {
+                  Get.to(() => const Pagetwo());
                 },
-                child: Text("Done" , 
-                style: TextStyle(
-                  fontSize: context.getFontSize(14.2),
-                  color: Colors.black,
-                ),),
-              )
-              :
-               GestureDetector(
-                onTap: (){
-                _controller.nextPage(duration: Duration(milliseconds: 500),
-                 curve: Curves.easeIn);
-                },
-                child: Text("next", 
-                style: TextStyle(
-                  fontSize: context.getFontSize(14.2),
-                  color: Colors.black,
-                ),),
-              )
+                child: Text(
+                  "Skip",
+                  style: TextStyle(
+                    fontSize: context.getFontSize(14.2),
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+              SmoothPageIndicator(controller: _controller, count: 2),
+              onlastpage
+                  ? GestureDetector(
+                      onTap: () {
+                        Get.to(() => const Pagethree());
+                      },
+                      child: Text(
+                        "Done",
+                        style: TextStyle(
+                          fontSize: context.getFontSize(14.2),
+                          color: Colors.black,
+                        ),
+                      ),
+                    )
+                  : GestureDetector(
+                      onTap: () {
+                        _controller.nextPage(
+                            duration: const Duration(milliseconds: 500),
+                            curve: Curves.easeIn);
+                      },
+                      child: Text(
+                        "next",
+                        style: TextStyle(
+                          fontSize: context.getFontSize(14.2),
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
             ],
-          ) , 
-          
+          ),
         )
       ],
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
   }
 }
