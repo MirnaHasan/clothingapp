@@ -1,6 +1,8 @@
+import 'package:clothes_app/Helper/Translation/LanguageTranslation.dart';
 import 'package:clothes_app/View/Style/ScreenSize.dart/ScreenSize.dart';
 import 'package:clothes_app/View/Style/colorApp/colorsApp.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Homepagebody extends StatefulWidget {
   const Homepagebody({super.key});
@@ -50,10 +52,10 @@ class _HomepagebodyState extends State<Homepagebody> {
                     // fontWeight: FontWeight.bold ,
                   ),
                 ),
-<<<<<<< HEAD
-                const SizedBox(
+
+           SizedBox(
                   height: 20,
-=======
+
                 child: Column(
                   children: [
                     Stack(
@@ -132,8 +134,8 @@ class _HomepagebodyState extends State<Homepagebody> {
                       ),
                     )
                   ],
->>>>>>> 846f90cc617f5e566f8ccc3c52f9fc82139b7ebb
-                ),
+
+                ),),
                 Container(
                   padding: const EdgeInsets.only(
                     top: 40,

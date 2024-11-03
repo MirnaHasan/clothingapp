@@ -18,7 +18,7 @@ class _OnboardingscreenState extends State<Onboardingscreen> {
   bool onlastpage = false;
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    return Stack( 
       children: [
         PageView(
           controller: _controller,
