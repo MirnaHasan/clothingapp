@@ -45,90 +45,12 @@ class _HomepagebodyState extends State<Homepagebody> {
                     // fontWeight: FontWeight.bold ,
                   ),
                 ),
-<<<<<<< HEAD
-                const SizedBox(
-                  height: 20,
-=======
-                child: Column(
-                  children: [
-                    Stack(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(
-                            top: context.getHeight(6),
-                            right: context.getWidth(4),
-                            left: context.getWidth(4),
-                          ),
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              right: context.getWidth(2),
-                              left: context.getWidth(2),
-                            ),
-                            decoration: BoxDecoration(
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 25,
-                                    offset: const Offset(2, 2),
-                                    color: ColorApp.background.withOpacity(0.7),
-                                  )
-                                ],
-                                color: Colors.white,
-                                border: Border.all(color: ColorApp.background),
-                                borderRadius: BorderRadius.circular(15)),
-                            width: context.getWidth(93),
-                            child: Column(
-                              children: [
-                                SizedBox(height: context.getHeight(1.9)),
-                                CustomTextformfield(
-                                    title: Words.userName.tr,
-                                    controller: userName),
-                                SizedBox(height: context.getHeight(1.9)),
-                                CustomTextformfield(
-                                    title: Words.email.tr, controller: email),
-                                SizedBox(height: context.getHeight(1.9)),
-                                CustomTextformfield(
-                                    title: Words.password.tr,
-                                    controller: password),
-                                SizedBox(height: context.getHeight(1.9)),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: context.getHeight(5),
-                    ),
-                    Text(
-                      Words.forgotPassword.tr,
-                      style: TextStyle(
-                          fontSize: context.getFontSize(14),
-                          color: ColorApp.background,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(height: context.getHeight(2)),
-                    MaterialButton(
-                      padding: EdgeInsets.symmetric(
-                          vertical: context.getHeight(1),
-                          horizontal: context.getWidth(6)),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18)),
-                      color: ColorApp.background,
-                      onPressed: () {
+                SizedBox(height: 20,),
+
+             
+
+                
                         
-                      },
-                      child: Text(
-                        Words.register.tr,
-                        style: TextStyle(
-                          fontSize: context.getFontSize(16),
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                    )
-                  ],
->>>>>>> 846f90cc617f5e566f8ccc3c52f9fc82139b7ebb
-                ),
                 Container(
                   padding: const EdgeInsets.only(
                     top: 40,
