@@ -1,5 +1,5 @@
 import 'package:clothes_app/View/Style/ScreenSize.dart/ScreenSize.dart';
-import 'package:clothes_app/View/screens/pagethree.dart';
+ import 'package:clothes_app/View/screens/pagethree.dart';
 import 'package:clothes_app/View/screens/pagetwo.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

@@ -2,7 +2,8 @@ import 'dart:async';
 import 'package:clothes_app/Helper/Log/LogApp.dart';
 import 'package:clothes_app/Helper/Service/initService.dart';
 import 'package:clothes_app/Helper/Translation/LanguageTranslation.dart';
-import 'package:clothes_app/onboardingscreen.dart';
+import 'package:clothes_app/View/route/routeApp.dart';
+import 'package:clothes_app/View/screens/onboardingscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -46,12 +47,9 @@ class MyApp extends StatelessWidget {
       fallbackLocale: const Locale('en', 'US'),
       translations: Words(),
       home: const Onboardingscreen(),
-      getPages: [
-        GetPage(
-          name: '/',
-          page: () => const Onboardingscreen(),
-        ),
-      ],
+      routes: RouteApp.instance.routes,
+      initialRoute: RouteApp.homepage
+      
     );
   }
 }
