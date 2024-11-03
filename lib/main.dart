@@ -44,14 +44,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      fallbackLocale: const Locale('en', 'US'),
       translations: Words(),
       home: const Onboardingscreen(),
-      routes: RouteApp.instance.routes,
-      initialRoute: shared.getBool('isOne') == true 
-      ? RouteApp.mainScreen
-       : RouteApp.onboarding, 
-      
+      getPages: RouteApp.instance.getPages,
+      initialRoute: shared.getBool('isOne') == true
+          ? RouteApp.mainScreen
+          : RouteApp.onboarding,
     );
   }
 }

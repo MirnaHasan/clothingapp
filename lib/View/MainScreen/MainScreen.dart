@@ -19,7 +19,7 @@ class MainScreen extends StatelessWidget {
             crossAxisSpacing: context.getWidth(1),
             childAspectRatio: 3 / 3.5,
           ),
-          itemCount: 8,
+          itemCount: 2,
           itemBuilder: (context, index) {
             return Padding(
               padding: EdgeInsets.only(
