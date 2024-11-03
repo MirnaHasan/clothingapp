@@ -8,8 +8,8 @@ class Pagetwobody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("pagetwobody"),),
-      body: Center(child: Text("page two body"),),
+      appBar: AppBar(title: const Text("pagetwobody"),),
+      body: const Center(child: Text("page two body"),),
     );
   }
 }

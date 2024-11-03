@@ -2,8 +2,6 @@
 
 
 
-import 'package:clothes_app/Helper/Service/initService.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Translationcontroller extends GetxController {
