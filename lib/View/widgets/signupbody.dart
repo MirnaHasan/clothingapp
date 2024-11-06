@@ -1,22 +1,26 @@
+
+
 import 'package:clothes_app/Helper/Translation/LanguageTranslation.dart';
 import 'package:clothes_app/View/Style/ScreenSize.dart/ScreenSize.dart';
 import 'package:clothes_app/View/Style/colorApp/colorsApp.dart';
+import 'package:clothes_app/View/widgets/homepagebody.dart';
 import 'package:clothes_app/View/widgets/signupbody.dart';
 import 'package:clothes_app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class Homepagebody extends StatefulWidget {
-  const Homepagebody({super.key});
+class SignUpBody extends StatefulWidget {
+  const SignUpBody({super.key});
 
   @override
-  State<Homepagebody> createState() => _HomepagebodyState();
+  State<SignUpBody> createState() => _SignUpBodyState();
 }
 
-class _HomepagebodyState extends State<Homepagebody> {
+class _SignUpBodyState extends State<SignUpBody> {
   final TextEditingController userName = TextEditingController();
   final TextEditingController password = TextEditingController();
   final TextEditingController email = TextEditingController();
+    final TextEditingController phonenumber= TextEditingController();
 
   @override
   void dispose() {
@@ -25,6 +29,7 @@ class _HomepagebodyState extends State<Homepagebody> {
     userName.dispose();
     password.dispose();
     email.dispose();
+    phonenumber.dispose();
   }
 
   @override
@@ -40,26 +45,27 @@ class _HomepagebodyState extends State<Homepagebody> {
 
               children: [
                 Text(
-                  "Login",
+                  "SignUp",
                   style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                       fontSize: context.getFontSize(34)),
                 ),
                 Text(
-                  "Welcome To Clothes Store",
+                  "Sign up to continue using this app",
                   style: TextStyle(
-                    fontSize: context.getFontSize(20),
+                    fontSize: context.getFontSize(17),
                     color: Colors.white,
                     // fontWeight: FontWeight.bold ,
                   ),
                 ),
+                SizedBox(height: context.getHeight(0.3)*9,),
                 
                 Container(
-                  padding: const EdgeInsets.only(
-                    top: 40,
-                    left: 10,
-                    right: 10,
+                  padding:  EdgeInsets.only(
+                    top: context.getWidth(0.9)*8,
+                    left: context.getWidth(0.8)*2,
+                    right: context.getWidth(0.8)*2,
                   ),
                   height: context.getHeight(0.2) * 400,
                   width: context.getWidth(0.2) * 600,
@@ -75,8 +81,11 @@ class _HomepagebodyState extends State<Homepagebody> {
                       Stack(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(
-                                top: 30.0, left: 10, right: 10),
+                            padding:  EdgeInsets.only(
+                                top: context.getHeight(0.6)*5,
+                                 left:  context.getHeight(0.2)*5, 
+                                 right: context.getHeight(0.2)*5, 
+                                 ),
                             child: Container(
                               decoration: BoxDecoration(
                                   boxShadow: [
@@ -92,8 +101,8 @@ class _HomepagebodyState extends State<Homepagebody> {
                                   color: Colors.white,
                                   border: Border.all(color: Colors.grey),
                                   borderRadius: BorderRadius.circular(15)),
-                              height: context.getHeight(0.1) * 350,
-                              width: context.getWidth(0.6) * 300,
+                              height: context.getHeight(0.1) * 390,
+                              width: context.getWidth(0.6) * 330,
                               child: Padding(
                                 padding: const EdgeInsets.only(
                                     top: 30.0, right: 10, left: 10, bottom: 30),
@@ -110,6 +119,9 @@ class _HomepagebodyState extends State<Homepagebody> {
                                         title: "Password",
                                         controller: password),
                                     const SizedBox(height: 10),
+                                      CustomTextformfield(
+                                        title: "PhoneNumber",
+                                        controller: phonenumber),
                                   ],
                                 ),
                               ),
@@ -138,27 +150,27 @@ class _HomepagebodyState extends State<Homepagebody> {
                         color: const Color.fromARGB(255, 98, 107, 137),
                         onPressed: () {},
                         child: Text(
-                          "Login",
+                          "sign up",
                           style: TextStyle(
                               fontSize: context.getFontSize(16),
                               fontWeight: FontWeight.bold,
                               color: Colors.white),
                         ),
                       ) , 
-                      SizedBox(height: 20,),
+                      SizedBox(height: 10,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("Don't have an account ? " , 
+                          Text("Have an account ?" , 
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: context.getFontSize(13)
                           ),),
                            TextButton(
                             onPressed: (){
-                              Get.to(()=>SignUpBody());
+                              Get.to(()=>Homepagebody());
                             },
-                             child: Text("Register" , 
+                             child: Text("Log In" , 
                                                        style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: context.getFontSize(13) , 

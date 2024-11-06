@@ -1,5 +1,9 @@
+import 'package:clothes_app/Helper/Service/initService.dart';
+import 'package:clothes_app/View/MainScreen/MainScreen.dart';
 import 'package:clothes_app/View/Style/ScreenSize.dart/ScreenSize.dart';
-import 'package:clothes_app/View/screens/pagethree.dart';
+import 'package:clothes_app/View/route/routeApp.dart';
+import 'package:clothes_app/View/screens/homepagescreen.dart';
+ import 'package:clothes_app/View/screens/pagethree.dart';
 import 'package:clothes_app/View/screens/pagetwo.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -29,7 +33,7 @@ class _OnboardingscreenState extends State<Onboardingscreen> {
           },
           children: const [
             //! هنا ضيفي page one
-            // Homepagescreen(),
+             Homepagescreen(),
             Pagetwo(),
             Pagethree(),
           ],
@@ -54,8 +58,9 @@ class _OnboardingscreenState extends State<Onboardingscreen> {
               SmoothPageIndicator(controller: _controller, count: 2),
               onlastpage
                   ? GestureDetector(
-                      onTap: () {
-                        Get.to(() => const Pagethree());
+                      onTap: () async {
+                       await shared.setBool('isOne', true);
+                        Get.toNamed(RouteApp.mainScreen);
                       },
                       child: Text(
                         "Done",
