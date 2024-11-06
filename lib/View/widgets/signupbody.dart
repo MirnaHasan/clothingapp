@@ -109,7 +109,7 @@ class _SignUpBodyState extends State<SignUpBody> {
                                 child: Column(
                                   children: [
                                     CustomTextformfield(
-                                        title: "UserName",
+                                        title: Words.userName.tr,
                                         controller: userName),
                                     const SizedBox(height: 10),
                                     CustomTextformfield(
@@ -170,7 +170,7 @@ class _SignUpBodyState extends State<SignUpBody> {
                             onPressed: (){
                               Get.to(()=>Homepagebody());
                             },
-                             child: Text("Log In" , 
+                             child: Text("Login" , 
                                                        style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: context.getFontSize(13) , 
