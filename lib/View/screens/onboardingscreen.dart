@@ -33,7 +33,7 @@ class _OnboardingscreenState extends State<Onboardingscreen> {
           },
           children:  [
             //! هنا ضيفي page one
-             Homepagescreen(),
+            //  Homepagescreen(),
             Pagetwo(),
             Pagethree(),
           ],

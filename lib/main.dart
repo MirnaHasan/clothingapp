@@ -4,9 +4,11 @@ import 'package:clothes_app/Helper/Log/LogApp.dart';
 import 'package:clothes_app/Helper/Service/initService.dart';
 import 'package:clothes_app/Helper/Translation/LanguageTranslation.dart';
 import 'package:clothes_app/View/MainScreen/MainScreen.dart';
+import 'package:clothes_app/View/Style/ScreenSize.dart/SizeBuilder.dart';
 import 'package:clothes_app/View/route/routeApp.dart';
 import 'package:clothes_app/View/screens/homepagescreen.dart';
 import 'package:clothes_app/View/screens/onboardingscreen.dart';
+import 'package:clothes_app/View/screens/registerscreen.dart';
 import 'package:clothes_app/firebase_options.dart';
 import 'package:clothes_app/Helper/Binding/mybindings.dart';
 import 'package:device_preview/device_preview.dart';
@@ -24,11 +26,11 @@ Future<void> main() async {
       await InitService.instance.initService();
 
       runApp(
-        // const MyApp(),
-        DevicePreview(
-          enabled: !kReleaseMode,
-          builder: (context) =>  MyApp(), // Wrap your app
-        ),
+        const MyApp(),
+        // DevicePreview(
+        //   enabled: !kReleaseMode,
+        //   builder: (context) =>  MyApp(), // Wrap your app
+        // ),
       );
     },
     (
@@ -50,29 +52,25 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      locale: Get.deviceLocale,
-      debugShowCheckedModeBanner: false,
-      title: 'Clothes App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return SizeBuilder(
+      baseSize: const Size(380, 720),
+      height: context.height,
+      width: context.width,
+      child: GetMaterialApp(
+        locale: Get.deviceLocale,
+        debugShowCheckedModeBanner: false,
+        title: 'Clothes App',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        translations: Words(),
+        initialBinding: MyBindings(),
+        home: SignUp(),
+        // home: FirebaseAuth.instance.currentUser == null
+        //     ? Homepagescreen()
+        //     : const MainScreen(),
+        routes: RouteApp.instance.routes,
       ),
-      translations: Words(),
-      initialBinding: MyBindings(),
-      home: FirebaseAuth.instance.currentUser == null
-          ? Homepagescreen()
-          : const MainScreen(),
-      routes: RouteApp.instance.routes,
-
-  home: FirebaseAuth.instance.currentUser==null 
-      ?Homepagescreen()
-      : MainScreen(),
-      routes: RouteApp.instance.routes,
-      // initialRoute: shared.getBool('isOne') == true 
-      // ? RouteApp.mainScreen
-      //  : RouteApp.onboarding, 
-      
->>>>>>> 4706d55acbb4793f00abcb008d1c1d3e95ca403c
     );
   }
 }
