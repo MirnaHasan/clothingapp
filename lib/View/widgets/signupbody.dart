@@ -4,7 +4,7 @@ import 'package:clothes_app/View/Style/ScreenSize.dart/ScreenSize.dart';
 import 'package:clothes_app/View/Style/colorApp/colorsApp.dart';
 import 'package:clothes_app/View/widgets/homepagebody.dart';
 
-import 'package:clothes_app/homecntroller.dart';
+import 'package:clothes_app/Controller/HomeController/homecntroller.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
