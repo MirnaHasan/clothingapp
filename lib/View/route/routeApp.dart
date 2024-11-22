@@ -15,7 +15,7 @@ class RouteApp {
 
    Map <String, WidgetBuilder> routes = {
     onboarding: (context) => const Onboardingscreen(),
-    homepage: (context) => const Homepagebody(),
-    // mainScreen : (context) => const MainScreen(),
+    homepage: (context) =>  Homepagebody(),
+    mainScreen : (context) => const MainScreen(),
   };
 }

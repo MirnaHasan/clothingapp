@@ -31,7 +31,7 @@ class _OnboardingscreenState extends State<Onboardingscreen> {
               onlastpage = (index == 1);
             });
           },
-          children: const [
+          children:  [
             //! هنا ضيفي page one
              Homepagescreen(),
             Pagetwo(),

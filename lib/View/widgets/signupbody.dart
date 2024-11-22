@@ -1,16 +1,19 @@
-
-
 import 'package:clothes_app/Helper/Translation/LanguageTranslation.dart';
+
 import 'package:clothes_app/View/Style/ScreenSize.dart/ScreenSize.dart';
 import 'package:clothes_app/View/Style/colorApp/colorsApp.dart';
 import 'package:clothes_app/View/widgets/homepagebody.dart';
-import 'package:clothes_app/View/widgets/signupbody.dart';
-import 'package:clothes_app/main.dart';
+
+import 'package:clothes_app/homecntroller.dart';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+// ignore: must_be_immutable
 class SignUpBody extends StatefulWidget {
-  const SignUpBody({super.key});
+  SignUpBody({super.key});
+  Homecntroller controller = Get.find();
 
   @override
   State<SignUpBody> createState() => _SignUpBodyState();
@@ -20,11 +23,11 @@ class _SignUpBodyState extends State<SignUpBody> {
   final TextEditingController userName = TextEditingController();
   final TextEditingController password = TextEditingController();
   final TextEditingController email = TextEditingController();
-    final TextEditingController phonenumber= TextEditingController();
+  final TextEditingController phonenumber = TextEditingController();
+  GlobalKey<FormState> formState = GlobalKey<FormState>();
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     userName.dispose();
     password.dispose();
@@ -41,8 +44,6 @@ class _SignUpBodyState extends State<SignUpBody> {
           child: Padding(
             padding: const EdgeInsets.only(top: 110.0),
             child: Column(
-              // mainAxisAlignment: MainAxisAlignment.spaceAround,
-
               children: [
                 Text(
                   "SignUp",
@@ -59,13 +60,14 @@ class _SignUpBodyState extends State<SignUpBody> {
                     // fontWeight: FontWeight.bold ,
                   ),
                 ),
-                SizedBox(height: context.getHeight(0.3)*9,),
-                
+                SizedBox(
+                  height: context.getHeight(0.3) * 9,
+                ),
                 Container(
-                  padding:  EdgeInsets.only(
-                    top: context.getWidth(0.9)*8,
-                    left: context.getWidth(0.8)*2,
-                    right: context.getWidth(0.8)*2,
+                  padding: EdgeInsets.only(
+                    top: context.getWidth(0.9) * 8,
+                    left: context.getWidth(0.8) * 2,
+                    right: context.getWidth(0.8) * 2,
                   ),
                   height: context.getHeight(0.2) * 400,
                   width: context.getWidth(0.2) * 600,
@@ -81,11 +83,11 @@ class _SignUpBodyState extends State<SignUpBody> {
                       Stack(
                         children: [
                           Padding(
-                            padding:  EdgeInsets.only(
-                                top: context.getHeight(0.6)*5,
-                                 left:  context.getHeight(0.2)*5, 
-                                 right: context.getHeight(0.2)*5, 
-                                 ),
+                            padding: EdgeInsets.only(
+                              top: context.getHeight(0.6) * 5,
+                              left: context.getHeight(0.2) * 5,
+                              right: context.getHeight(0.2) * 5,
+                            ),
                             child: Container(
                               decoration: BoxDecoration(
                                   boxShadow: [
@@ -106,23 +108,47 @@ class _SignUpBodyState extends State<SignUpBody> {
                               child: Padding(
                                 padding: const EdgeInsets.only(
                                     top: 30.0, right: 10, left: 10, bottom: 30),
-                                child: Column(
-                                  children: [
-                                    CustomTextformfield(
-                                        title: Words.userName.tr,
-                                        controller: userName),
-                                    const SizedBox(height: 10),
-                                    CustomTextformfield(
-                                        title: "E-mail", controller: email),
-                                    const SizedBox(height: 10),
-                                    CustomTextformfield(
-                                        title: "Password",
-                                        controller: password),
-                                    const SizedBox(height: 10),
+                                child: Form(
+                                  key: formState,
+                                  child: Column(
+                                    children: [
                                       CustomTextformfield(
-                                        title: "PhoneNumber",
-                                        controller: phonenumber),
-                                  ],
+                                          validator: (val) {
+                                            if (val!.isEmpty) {
+                                              return "Cant be empty";
+                                            }
+                                          },
+                                          title: Words.userName.tr,
+                                          controller: userName),
+                                      const SizedBox(height: 10),
+                                      CustomTextformfield(
+                                          validator: (val) {
+                                            if (val!.isEmpty) {
+                                              return "Cant be empty";
+                                            }
+                                          },
+                                          title: "E-mail",
+                                          controller: email),
+                                      const SizedBox(height: 10),
+                                      CustomTextformfield(
+                                          validator: (val) {
+                                            if (val!.isEmpty) {
+                                              return "Cant be empty";
+                                            }
+                                          },
+                                          title: "Password",
+                                          controller: password),
+                                      const SizedBox(height: 10),
+                                      CustomTextformfield(
+                                          validator: (val) {
+                                            if (val!.isEmpty) {
+                                              return "Cant be empty";
+                                            }
+                                          },
+                                          title: "PhoneNumber",
+                                          controller: phonenumber),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
@@ -144,11 +170,42 @@ class _SignUpBodyState extends State<SignUpBody> {
                       ),
                       MaterialButton(
                         padding: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal:70),
+                            vertical: 10, horizontal: 70),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18)),
                         color: const Color.fromARGB(255, 98, 107, 137),
-                        onPressed: () {},
+                        onPressed: () async {
+                          if (formState.currentState!.validate()) {
+                            try {
+                              // ignore: unused_local_variable
+                              final credential = await FirebaseAuth.instance
+                                  .createUserWithEmailAndPassword(
+                                email: email.text,
+                                password: password.text,
+                              );
+                              Get.offAllNamed("/mainScreen");
+                            } on FirebaseAuthException catch (e) {
+                              if (e.code == 'weak-password') {
+                                Get.defaultDialog(
+                                  title: "تنبيه",
+                                  content: Text("Weak Password"),
+                                );
+                                print('The password provided is too weak.');
+                              } else if (e.code == 'email-already-in-use') {
+                                Get.defaultDialog(
+                                  title: "تنبيه",
+                                  content: Text(
+                                      "the account already exists for that email"),
+                                );
+                                print(
+                                    'The account already exists for that email.');
+                              }
+                            } catch (e) {
+                              print(e);
+                            }
+                          } else
+                            print("not valid");
+                        },
                         child: Text(
                           "sign up",
                           style: TextStyle(
@@ -156,28 +213,31 @@ class _SignUpBodyState extends State<SignUpBody> {
                               fontWeight: FontWeight.bold,
                               color: Colors.white),
                         ),
-                      ) , 
-                      SizedBox(height: 10,),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("Have an account ?" , 
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: context.getFontSize(13)
-                          ),),
-                           TextButton(
-                            onPressed: (){
-                              Get.to(()=>Homepagebody());
+                          Text(
+                            "Have an account ?",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: context.getFontSize(13)),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              Get.to(() => Homepagebody());
                             },
-                             child: Text("Login" , 
-                                                       style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: context.getFontSize(13) , 
-                              color: Color.fromARGB(255, 204, 64, 35)
-                                                       ),),
-                           ),
-                          
+                            child: Text(
+                              "Login",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: context.getFontSize(13),
+                                  color: Color.fromARGB(255, 204, 64, 35)),
+                            ),
+                          ),
                         ],
                       )
                     ],
@@ -193,17 +253,19 @@ class _SignUpBodyState extends State<SignUpBody> {
 }
 
 class CustomTextformfield extends StatelessWidget {
-  const CustomTextformfield({
-    super.key,
-    required this.title,
-    required this.controller,
-  });
+  CustomTextformfield(
+      {super.key,
+      required this.title,
+      required this.controller,
+      required this.validator});
   final String title;
   final TextEditingController controller;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      validator: validator,
       controller: controller,
       decoration: InputDecoration(
         border: OutlineInputBorder(
