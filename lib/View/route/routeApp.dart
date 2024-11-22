@@ -11,10 +11,9 @@ class RouteApp {
   static String homepage = '/homepage';
   static String mainScreen = '/mainScreen';
 
-  List<GetPage<dynamic>>? getPages = [
-    GetPage(name: onboarding, page: () => const Onboardingscreen()),
-    GetPage(name:mainScreen, page: () => const MainScreen()),
-    GetPage(name: homepage, page: () => const Homepagebody()),
-
-  ];
+   Map <String, WidgetBuilder> routes = {
+    onboarding: (context) => const Onboardingscreen(),
+    homepage: (context) =>  Homepagebody(),
+    mainScreen : (context) => const MainScreen(),
+  };
 }

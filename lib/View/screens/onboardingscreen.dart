@@ -2,6 +2,7 @@ import 'package:clothes_app/Helper/Service/initService.dart';
 import 'package:clothes_app/View/MainScreen/MainScreen.dart';
 import 'package:clothes_app/View/Style/ScreenSize.dart/ScreenSize.dart';
 import 'package:clothes_app/View/route/routeApp.dart';
+import 'package:clothes_app/View/screens/homepagescreen.dart';
  import 'package:clothes_app/View/screens/pagethree.dart';
 import 'package:clothes_app/View/screens/pagetwo.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,7 @@ class _OnboardingscreenState extends State<Onboardingscreen> {
   bool onlastpage = false;
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    return Stack( 
       children: [
         PageView(
           controller: _controller,
@@ -30,9 +31,9 @@ class _OnboardingscreenState extends State<Onboardingscreen> {
               onlastpage = (index == 1);
             });
           },
-          children: const [
+          children:  [
             //! هنا ضيفي page one
-            // Homepagescreen(),
+             Homepagescreen(),
             Pagetwo(),
             Pagethree(),
           ],

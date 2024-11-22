@@ -1,14 +1,15 @@
 import 'package:get/get.dart';
 
-class Words extends Translations {
+class Words implements Translations {
   static const appName = 'appName';
   static const login = 'login';
   static const welcome = 'welcome';
   static const register = 'register';
-  static const forgotPassword = 'forgotPassword';
+  static const forgotPassword = 'forgot Password';
   static const userName = 'userName';
   static const password = 'password';
   static const email = 'email';
+  static const phonenumber = 'PhoneNumber';
 
   @override
   Map<String, Map<String, String>> get keys => {
@@ -21,6 +22,7 @@ class Words extends Translations {
           userName : 'اسم المستخدم',
           password : 'كلمة السر',
           email : 'البريد الالكتروني',
+           phonenumber:"رقم الهاتف"
         },
         'en': {
           appName: "Clothes Store",
@@ -31,6 +33,7 @@ class Words extends Translations {
           userName : 'User Name',
           password : 'Password',
           email : 'Email',
+          phonenumber:"PhoneNumber"
         },
       };
 }

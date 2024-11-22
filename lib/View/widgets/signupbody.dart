@@ -1,7 +1,9 @@
+import 'package:clothes_app/Helper/Translation/LanguageTranslation.dart';
 
 import 'package:clothes_app/View/Style/ScreenSize.dart/ScreenSize.dart';
 import 'package:clothes_app/View/Style/colorApp/colorsApp.dart';
-import 'package:clothes_app/View/widgets/signupbody.dart';
+import 'package:clothes_app/View/widgets/homepagebody.dart';
+
 import 'package:clothes_app/homecntroller.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -9,26 +11,28 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 // ignore: must_be_immutable
-class Homepagebody extends StatefulWidget {
-   Homepagebody({super.key});
+class SignUpBody extends StatefulWidget {
+  SignUpBody({super.key});
   Homecntroller controller = Get.find();
 
   @override
-  State<Homepagebody> createState() => _HomepagebodyState();
+  State<SignUpBody> createState() => _SignUpBodyState();
 }
 
-class _HomepagebodyState extends State<Homepagebody> {
+class _SignUpBodyState extends State<SignUpBody> {
   final TextEditingController userName = TextEditingController();
   final TextEditingController password = TextEditingController();
   final TextEditingController email = TextEditingController();
- GlobalKey <FormState> formState = GlobalKey<FormState>();
+  final TextEditingController phonenumber = TextEditingController();
+  GlobalKey<FormState> formState = GlobalKey<FormState>();
+
   @override
   void dispose() {
-
     super.dispose();
     userName.dispose();
     password.dispose();
     email.dispose();
+    phonenumber.dispose();
   }
 
   @override
@@ -38,33 +42,32 @@ class _HomepagebodyState extends State<Homepagebody> {
       body: SingleChildScrollView(
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.only(top: 100.0),
+            padding: const EdgeInsets.only(top: 110.0),
             child: Column(
-              // mainAxisAlignment: MainAxisAlignment.spaceAround,
-
               children: [
                 Text(
-                  "Login",
+                  "SignUp",
                   style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                       fontSize: context.getFontSize(34)),
                 ),
                 Text(
-                  "Welcome To Clothes Store",
+                  "Sign up to continue using this app",
                   style: TextStyle(
-                    fontSize: context.getFontSize(20),
+                    fontSize: context.getFontSize(17),
                     color: Colors.white,
                     // fontWeight: FontWeight.bold ,
                   ),
                 ),
-                SizedBox(height: 30,),
-                
+                SizedBox(
+                  height: context.getHeight(0.3) * 9,
+                ),
                 Container(
-                  padding: const EdgeInsets.only(
-                    top: 40,
-                    left: 10,
-                    right: 10,
+                  padding: EdgeInsets.only(
+                    top: context.getWidth(0.9) * 8,
+                    left: context.getWidth(0.8) * 2,
+                    right: context.getWidth(0.8) * 2,
                   ),
                   height: context.getHeight(0.2) * 400,
                   width: context.getWidth(0.2) * 600,
@@ -80,8 +83,11 @@ class _HomepagebodyState extends State<Homepagebody> {
                       Stack(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(
-                                top: 30.0, left: 10, right: 10),
+                            padding: EdgeInsets.only(
+                              top: context.getHeight(0.6) * 5,
+                              left: context.getHeight(0.2) * 5,
+                              right: context.getHeight(0.2) * 5,
+                            ),
                             child: Container(
                               decoration: BoxDecoration(
                                   boxShadow: [
@@ -97,8 +103,8 @@ class _HomepagebodyState extends State<Homepagebody> {
                                   color: Colors.white,
                                   border: Border.all(color: Colors.grey),
                                   borderRadius: BorderRadius.circular(15)),
-                              height: context.getHeight(0.1) * 350,
-                              width: context.getWidth(0.6) * 300,
+                              height: context.getHeight(0.1) * 390,
+                              width: context.getWidth(0.6) * 330,
                               child: Padding(
                                 padding: const EdgeInsets.only(
                                     top: 30.0, right: 10, left: 10, bottom: 30),
@@ -107,31 +113,40 @@ class _HomepagebodyState extends State<Homepagebody> {
                                   child: Column(
                                     children: [
                                       CustomTextformfield(
-                                        validator:(val){
-                                          if(val!.isEmpty){
-                                            return "Cant Be Empty";
-                                          }
-                                        } ,
-                                          title: "UserName",
+                                          validator: (val) {
+                                            if (val!.isEmpty) {
+                                              return "Cant be empty";
+                                            }
+                                          },
+                                          title: Words.userName.tr,
                                           controller: userName),
                                       const SizedBox(height: 10),
                                       CustomTextformfield(
-                                        validator: (val){
-                                          if(val!.isEmpty){
-                                            return "Cant Be Empty";
-                                          }
-                                        } ,
-                                          title: "E-mail", controller: email),
+                                          validator: (val) {
+                                            if (val!.isEmpty) {
+                                              return "Cant be empty";
+                                            }
+                                          },
+                                          title: "E-mail",
+                                          controller: email),
                                       const SizedBox(height: 10),
                                       CustomTextformfield(
-                                        validator: (val){
-                                          if(val!.isEmpty){
-                                            return "Cant Be Empty";
-                                          }
-                                        } ,
+                                          validator: (val) {
+                                            if (val!.isEmpty) {
+                                              return "Cant be empty";
+                                            }
+                                          },
                                           title: "Password",
                                           controller: password),
                                       const SizedBox(height: 10),
+                                      CustomTextformfield(
+                                          validator: (val) {
+                                            if (val!.isEmpty) {
+                                              return "Cant be empty";
+                                            }
+                                          },
+                                          title: "PhoneNumber",
+                                          controller: phonenumber),
                                     ],
                                   ),
                                 ),
@@ -155,78 +170,74 @@ class _HomepagebodyState extends State<Homepagebody> {
                       ),
                       MaterialButton(
                         padding: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal:70),
+                            vertical: 10, horizontal: 70),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18)),
                         color: const Color.fromARGB(255, 98, 107, 137),
                         onPressed: () async {
-                         if(
-                          formState.currentState!.validate()
-                         ){ try {
-          // ignore: unused_local_variable
-          final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-          
-         email: email.text,
-         password: password.text,
-          );
-             Get.offAllNamed('/mainScreen');
-              } 
-              on FirebaseAuthException catch (e) {
-               if (e.code == 'user-not-found') {
-                Get.defaultDialog(
-                  title: "تنبيه" ,
-                  content: Text("no user found for that email") ,
-
-
-                );
-                  print('No user found for that email.');}
-       else if (e.code == 'wrong-password') {
-        Get.defaultDialog(
-                  title: "تنبيه" ,
-                  content: Text("wrong password provided for that user") ,
-
-
-                );
-              print('Wrong password provided for that user.');
-                   }
-                    }
-
-
-
-
-                         }else print("not valid");
-                 
-
+                          if (formState.currentState!.validate()) {
+                            try {
+                              // ignore: unused_local_variable
+                              final credential = await FirebaseAuth.instance
+                                  .createUserWithEmailAndPassword(
+                                email: email.text,
+                                password: password.text,
+                              );
+                              Get.offAllNamed("/mainScreen");
+                            } on FirebaseAuthException catch (e) {
+                              if (e.code == 'weak-password') {
+                                Get.defaultDialog(
+                                  title: "تنبيه",
+                                  content: Text("Weak Password"),
+                                );
+                                print('The password provided is too weak.');
+                              } else if (e.code == 'email-already-in-use') {
+                                Get.defaultDialog(
+                                  title: "تنبيه",
+                                  content: Text(
+                                      "the account already exists for that email"),
+                                );
+                                print(
+                                    'The account already exists for that email.');
+                              }
+                            } catch (e) {
+                              print(e);
+                            }
+                          } else
+                            print("not valid");
                         },
                         child: Text(
-                          "Login",
+                          "sign up",
                           style: TextStyle(
                               fontSize: context.getFontSize(16),
                               fontWeight: FontWeight.bold,
                               color: Colors.white),
                         ),
-                      ) , 
-                      SizedBox(height: 20,),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("Don't have an account ? " , 
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: context.getFontSize(13)
-                          ),),
-                           TextButton(
-                            onPressed: (){
-                              Get.to(()=>SignUpBody());
+                          Text(
+                            "Have an account ?",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: context.getFontSize(13)),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              Get.to(() => Homepagebody());
                             },
-                             child: Text("Register" , 
-                                                       style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: context.getFontSize(13) , 
-                              color: Color.fromARGB(255, 204, 64, 35)
-                                                       ),),
-                           ),
-                          
+                            child: Text(
+                              "Login",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: context.getFontSize(13),
+                                  color: Color.fromARGB(255, 204, 64, 35)),
+                            ),
+                          ),
                         ],
                       )
                     ],
@@ -242,15 +253,14 @@ class _HomepagebodyState extends State<Homepagebody> {
 }
 
 class CustomTextformfield extends StatelessWidget {
-   CustomTextformfield({
-    super.key,
-    required this.title,
-    required this.controller,
-    required this.validator,
-  });
+  CustomTextformfield(
+      {super.key,
+      required this.title,
+      required this.controller,
+      required this.validator});
   final String title;
   final TextEditingController controller;
-  final String? Function(String?)? validator ;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {

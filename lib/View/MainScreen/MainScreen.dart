@@ -1,6 +1,9 @@
 import 'package:clothes_app/View/Style/ScreenSize.dart/ScreenSize.dart';
+import 'package:clothes_app/View/screens/homepagescreen.dart';
 import 'package:clothes_app/View/screens/onboardingscreen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -10,6 +13,13 @@ class MainScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('MainScreen'),
+        actions: [
+          IconButton(onPressed: ()async{
+            await FirebaseAuth.instance.signOut();
+            Get.to(()=>Homepagescreen());
+
+          }, icon: Icon(Icons.exit_to_app))
+        ],
       ),
       body: Center(
         child: GridView.builder(
@@ -19,7 +29,10 @@ class MainScreen extends StatelessWidget {
             crossAxisSpacing: context.getWidth(1),
             childAspectRatio: 3 / 3.5,
           ),
-          itemCount: 2,
+
+          itemCount: 6,
+       
+
           itemBuilder: (context, index) {
             return Padding(
               padding: EdgeInsets.only(
