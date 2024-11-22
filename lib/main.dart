@@ -4,6 +4,8 @@ import 'package:clothes_app/Helper/Service/initService.dart';
 import 'package:clothes_app/Helper/Translation/LanguageTranslation.dart';
 import 'package:clothes_app/View/route/routeApp.dart';
 import 'package:clothes_app/View/screens/onboardingscreen.dart';
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,7 +18,7 @@ Future<void> main() async {
         const MyApp(),
         // DevicePreview(
         //   enabled: !kReleaseMode,
-        //   builder: (context) => const MyApp(), // Wrap your app
+        //   builder: (context) =>  MyApp(), // Wrap your app
         // ),
       );
     },
