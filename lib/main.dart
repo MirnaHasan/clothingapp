@@ -66,7 +66,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       translations: Words(),
-      home: const Onboardingscreen(),
+      initialBinding: MyBindings(),
+      home: FirebaseAuth.instance.currentUser==null ?Homepagescreen():MainScreen(),
       routes: RouteApp.instance.routes,
       initialRoute: shared.getBool('isOne') == true 
       ? RouteApp.mainScreen
