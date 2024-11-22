@@ -59,9 +59,14 @@ class MyApp extends StatelessWidget {
       ),
       translations: Words(),
       initialBinding: MyBindings(),
-      home: FirebaseAuth.instance.currentUser == null
-          ? Homepagescreen()
-          : const MainScreen(),
+      // home: FirebaseAuth.instance.currentUser == null
+      //     ? Homepagescreen()
+      //     : const MainScreen(),
+      home: (FirebaseAuth.instance.currentUser != null &&
+          FirebaseAuth.instance.currentUser!.emailVerified)
+          ? MainScreen()
+          : Homepagescreen(),
+      
       routes: RouteApp.instance.routes,
 
 

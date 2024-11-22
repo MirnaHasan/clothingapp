@@ -170,7 +170,14 @@ class _HomepagebodyState extends State<Homepagebody> {
          email: email.text,
          password: password.text,
           );
-             Get.offAllNamed('/mainScreen');
+          if(credential.user!.emailVerified){Get.offAllNamed('/mainScreen');}
+             else{
+              Get.defaultDialog(
+                title: "تنبيه",
+                content: Text( textAlign: TextAlign.center , 
+                  "الرجاء التوجه الى بريدك و الضغط على لينك التحقق حتى يتم تفعيل الحساب")
+              );
+             }
               } 
               on FirebaseAuthException catch (e) {
                if (e.code == 'user-not-found') {
