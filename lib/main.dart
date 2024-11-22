@@ -67,11 +67,13 @@ class MyApp extends StatelessWidget {
       ),
       translations: Words(),
       initialBinding: MyBindings(),
-      home: FirebaseAuth.instance.currentUser==null ?Homepagescreen():MainScreen(),
+      home: FirebaseAuth.instance.currentUser==null 
+      ?Homepagescreen()
+      : MainScreen(),
       routes: RouteApp.instance.routes,
-      initialRoute: shared.getBool('isOne') == true 
-      ? RouteApp.mainScreen
-       : RouteApp.onboarding, 
+      // initialRoute: shared.getBool('isOne') == true 
+      // ? RouteApp.mainScreen
+      //  : RouteApp.onboarding, 
       
     );
   }

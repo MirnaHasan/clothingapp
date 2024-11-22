@@ -16,7 +16,7 @@ class MainScreen extends StatelessWidget {
         actions: [
           IconButton(onPressed: ()async{
             await FirebaseAuth.instance.signOut();
-            Get.to(()=>Homepagescreen());
+            Get.offAllNamed("/homepage");
 
           }, icon: Icon(Icons.exit_to_app))
         ],

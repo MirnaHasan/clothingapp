@@ -104,35 +104,37 @@ class _HomepagebodyState extends State<Homepagebody> {
                                     top: 30.0, right: 10, left: 10, bottom: 30),
                                 child: Form(
                                   key: formState,
-                                  child: Column(
-                                    children: [
-                                      CustomTextformfield(
-                                        validator:(val){
-                                          if(val!.isEmpty){
-                                            return "Cant Be Empty";
-                                          }
-                                        } ,
-                                          title: "UserName",
-                                          controller: userName),
-                                      const SizedBox(height: 10),
-                                      CustomTextformfield(
-                                        validator: (val){
-                                          if(val!.isEmpty){
-                                            return "Cant Be Empty";
-                                          }
-                                        } ,
-                                          title: "E-mail", controller: email),
-                                      const SizedBox(height: 10),
-                                      CustomTextformfield(
-                                        validator: (val){
-                                          if(val!.isEmpty){
-                                            return "Cant Be Empty";
-                                          }
-                                        } ,
-                                          title: "Password",
-                                          controller: password),
-                                      const SizedBox(height: 10),
-                                    ],
+                                  child: SingleChildScrollView(
+                                    child: Column(
+                                      children: [
+                                        CustomTextformfield(
+                                          validator:(val){
+                                            if(val!.isEmpty){
+                                              return "Cant Be Empty";
+                                            }
+                                          } ,
+                                            title: "UserName",
+                                            controller: userName),
+                                        const SizedBox(height: 10),
+                                        CustomTextformfield(
+                                          validator: (val){
+                                            if(val!.isEmpty){
+                                              return "Cant Be Empty";
+                                            }
+                                          } ,
+                                            title: "E-mail", controller: email),
+                                        const SizedBox(height: 10),
+                                        CustomTextformfield(
+                                          validator: (val){
+                                            if(val!.isEmpty){
+                                              return "Cant Be Empty";
+                                            }
+                                          } ,
+                                            title: "Password",
+                                            controller: password),
+                                        const SizedBox(height: 10),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -217,7 +219,7 @@ class _HomepagebodyState extends State<Homepagebody> {
                           ),),
                            TextButton(
                             onPressed: (){
-                              Get.to(()=>SignUpBody());
+                              Get.offAllNamed("/signUp");
                             },
                              child: Text("Register" , 
                                                        style: TextStyle(
