@@ -10,6 +10,9 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+  FirebaseAuth.instance.currentUser!.emailVerified ?
+  Text("Welcome")
+  : Text("please verified your email");
     return Scaffold(
       appBar: AppBar(
         title: const Text('MainScreen'),
