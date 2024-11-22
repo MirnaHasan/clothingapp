@@ -65,17 +65,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      fallbackLocale: const Locale('en', 'US'),
       translations: Words(),
-      home: FirebaseAuth.instance.currentUser==null ? Homepagescreen() 
-      : MainScreen(),
-      
+      home: const Onboardingscreen(),
       routes: RouteApp.instance.routes,
-      initialBinding: MyBindings(),
-   
-      // initialRoute: shared.getBool('isOne') == true 
-      // ? RouteApp.mainScreen
-      //  : RouteApp.onboarding, 
+      initialRoute: shared.getBool('isOne') == true 
+      ? RouteApp.mainScreen
+       : RouteApp.onboarding, 
       
     );
   }
