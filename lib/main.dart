@@ -71,19 +71,6 @@ class MyApp extends StatelessWidget {
             : const MainScreen(),
         routes: RouteApp.instance.routes,
       ),
-
-      // translations: Words(),
-      // initialBinding: MyBindings(),
-      // home: FirebaseAuth.instance.currentUser == null
-      //     ? Homepagescreen()
-      //     : const MainScreen(),
-      // routes: RouteApp.instance.routes,
-
-
-      // initialRoute: shared.getBool('isOne') == true 
-      // ? RouteApp.mainScreen
-      //  : RouteApp.onboarding, 
-    
     );
   }
 }

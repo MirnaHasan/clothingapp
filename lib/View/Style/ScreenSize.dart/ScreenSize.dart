@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:clothes_app/View/Style/ScreenSize.dart/SizeBuilder.dart';
 import 'package:flutter/material.dart';
 
@@ -33,6 +35,9 @@ extension ScreenSize on BuildContext {
 
   double getFontSize(num f) {
     return f * scaleWidth;
+  }
+  double getMinSize(num f) {
+    return f * min(scaleWidth, scaleHeight);
   }
   
 
