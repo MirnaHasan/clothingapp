@@ -41,7 +41,7 @@ class _SignUpBodyState extends State<SignUpBody> {
       backgroundColor: ColorApp.background,
       body: Center(
         child: Padding(
-          padding:  EdgeInsets.only(top: context.getHeight(40)),
+          padding:  EdgeInsets.only(top: context.getHeight(20)),
           child: Column(
             children: [
               Text(
@@ -60,14 +60,16 @@ class _SignUpBodyState extends State<SignUpBody> {
                 ),
               ),
               SizedBox(
-                height: context.getHeight(20),
+                height: context.getHeight(20) ,
               ),
               Expanded(
                 child: Container(
                   padding: EdgeInsets.only(
-                    top: context.getWidth(10),
-                    
+                    top: context.getWidth(10) ,
+                    left: context.getWidth(6) ,
+                    right: context.getWidth(6) ,
                   ),
+                  // height: context.getHeight() ,
                   width: context.width,
                   decoration: const BoxDecoration(
                     color: Colors.white,
@@ -83,7 +85,7 @@ class _SignUpBodyState extends State<SignUpBody> {
                           children: [
                             Padding(
                               padding: EdgeInsets.only(
-                                top: context.getHeight(20) ,
+                                top: context.getHeight(30) ,
                                 left: context.getHeight(4) ,
                                 right: context.getHeight(4) ,
                               ),
@@ -102,8 +104,8 @@ class _SignUpBodyState extends State<SignUpBody> {
                                     color: Colors.white,
                                     border: Border.all(color: Colors.grey),
                                     borderRadius: BorderRadius.circular(15)),
-                                height: context.getHeight(290) ,
-                                width: context.getWidth(360),
+                                height: context.getHeight(300) ,
+                                width: context.width,
                                 child: Padding(
                                   padding: const EdgeInsets.only(
                                       top: 30.0, right: 10, left: 10, bottom: 30),
@@ -113,7 +115,7 @@ class _SignUpBodyState extends State<SignUpBody> {
                                       child: Column(
                                         children: [
                                           CustomTextformfield(
-                                           
+                                             
                                               title: Words.userName.tr,
                                               controller: userName),
                                           const SizedBox(height: 10),
@@ -128,7 +130,7 @@ class _SignUpBodyState extends State<SignUpBody> {
                                               controller: password),
                                           const SizedBox(height: 10),
                                           CustomTextformfield(
-                                              
+                                             
                                               title: "PhoneNumber",
                                               controller: phonenumber),
                                         ],
@@ -173,13 +175,13 @@ class _SignUpBodyState extends State<SignUpBody> {
                                 if (e.code == 'weak-password') {
                                   Get.defaultDialog(
                                     title: "تنبيه",
-                                    content: const Text("Weak Password"),
+                                    content: Text("Weak Password"),
                                   );
                                   print('The password provided is too weak.');
                                 } else if (e.code == 'email-already-in-use') {
                                   Get.defaultDialog(
                                     title: "تنبيه",
-                                    content: const Text(
+                                    content: Text(
                                         "the account already exists for that email"),
                                   );
                                   print(
@@ -199,7 +201,7 @@ class _SignUpBodyState extends State<SignUpBody> {
                                 color: Colors.white),
                           ),
                         ),
-                        const SizedBox(
+                        SizedBox(
                           height: 10,
                         ),
                         Row(
@@ -220,8 +222,7 @@ class _SignUpBodyState extends State<SignUpBody> {
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: context.getFontSize(13),
-                                    color:
-                                        const Color.fromARGB(255, 204, 64, 35)),
+                                    color: Color.fromARGB(255, 204, 64, 35)),
                               ),
                             ),
                           ],
