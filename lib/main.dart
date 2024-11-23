@@ -24,11 +24,11 @@ Future<void> main() async {
       await InitService.instance.initService();
 
       runApp(
-        // const MyApp(),
-        DevicePreview(
-          enabled: !kReleaseMode,
-          builder: (context) =>  MyApp(), // Wrap your app
-        ),
+        const MyApp(),
+        // DevicePreview(
+        //   enabled: !kReleaseMode,
+        //   builder: (context) =>  MyApp(), // Wrap your app
+        // ),
       );
     },
     (
