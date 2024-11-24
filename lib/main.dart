@@ -4,7 +4,7 @@ import 'package:clothes_app/Helper/Log/LogApp.dart';
 import 'package:clothes_app/Helper/Service/initService.dart';
 import 'package:clothes_app/Helper/Translation/LanguageTranslation.dart';
 import 'package:clothes_app/View/MainScreen/MainScreen.dart';
-
+import 'package:clothes_app/View/Style/ScreenSize.dart/SizeBuilder.dart';
 import 'package:clothes_app/View/route/routeApp.dart';
 import 'package:clothes_app/View/screens/homepagescreen.dart';
 
@@ -52,26 +52,25 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      locale: Get.deviceLocale,
-      debugShowCheckedModeBanner: false,
-      title: 'Clothes App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return SizeBuilder(
+      baseSize: const Size(380, 720),
+      height: context.height,
+      width: context.width,
+      child: GetMaterialApp(
+        locale: Get.deviceLocale,
+        debugShowCheckedModeBanner: false,
+        title: 'Clothes App',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        translations: Words(),
+        initialBinding: MyBindings(),
+        // home: SignUp(),
+        home: FirebaseAuth.instance.currentUser == null
+            ? Homepagescreen()
+            : const MainScreen(),
+        routes: RouteApp.instance.routes,
       ),
-      translations: Words(),
-      initialBinding: MyBindings(),
-      home: FirebaseAuth.instance.currentUser == null
-          ? Homepagescreen()
-          : const MainScreen(),
-      routes: RouteApp.instance.routes,
-
-
-      // initialRoute: shared.getBool('isOne') == true 
-      // ? RouteApp.mainScreen
-      //  : RouteApp.onboarding, 
-      
-
     );
   }
 }

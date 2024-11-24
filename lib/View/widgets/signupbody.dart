@@ -97,14 +97,14 @@ class _SignUpBodyState extends State<SignUpBody> {
                                       blurRadius: 25,
                                       offset: const Offset(0, 12),
                                       color:
-                                          const Color.fromARGB(255, 27, 48, 65)
+                                          const Color.fromARGB(255, 105, 183, 247)
                                               .withOpacity(0.7),
                                     )
                                   ],
                                   color: Colors.white,
                                   border: Border.all(color: Colors.grey),
                                   borderRadius: BorderRadius.circular(15)),
-                              height: context.getHeight(290),
+                              height: context.getHeight(310),
                               width: context.getWidth(360),
                               child: Padding(
                                 padding: const EdgeInsets.only(
