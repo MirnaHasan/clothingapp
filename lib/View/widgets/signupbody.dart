@@ -1,3 +1,4 @@
+import 'package:clothes_app/Helper/Log/LogApp.dart';
 import 'package:clothes_app/Helper/Translation/LanguageTranslation.dart';
 
 import 'package:clothes_app/View/Style/ScreenSize.dart/ScreenSize.dart';
@@ -39,52 +40,52 @@ class _SignUpBodyState extends State<SignUpBody> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorApp.background,
-      body: SingleChildScrollView(
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.only(top: 110.0),
-            child: Column(
-              children: [
-                Text(
-                  "SignUp",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: context.getFontSize(34)),
+      body: Padding(
+        padding: EdgeInsets.only(top: context.getHeight(30)),
+        child: Column(
+          children: [
+            Text(
+              "SignUp",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: context.getFontSize(34)),
+            ),
+            Text(
+              "Sign up to continue using this app",
+              style: TextStyle(
+                fontSize: context.getFontSize(17),
+                color: Colors.white,
+                // fontWeight: FontWeight.bold ,
+              ),
+            ),
+            SizedBox(
+              height: context.getHeight(20),
+            ),
+            Expanded(
+              child: Container(
+                padding: EdgeInsets.only(
+                  top: context.getWidth(20),
+                  // left: context.getWidth(0.8) * 2,
+                  // right: context.getWidth(0.8) * 2,
                 ),
-                Text(
-                  "Sign up to continue using this app",
-                  style: TextStyle(
-                    fontSize: context.getFontSize(17),
-                    color: Colors.white,
-                    // fontWeight: FontWeight.bold ,
+                // height: context.getHeight(),
+                width: context.width,
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(70),
+                    topRight: Radius.circular(70),
                   ),
                 ),
-                SizedBox(
-                  height: context.getHeight(0.3) * 9,
-                ),
-                Container(
-                  padding: EdgeInsets.only(
-                    top: context.getWidth(0.9) * 8,
-                    left: context.getWidth(0.8) * 2,
-                    right: context.getWidth(0.8) * 2,
-                  ),
-                  height: context.getHeight(0.2) * 400,
-                  width: context.getWidth(0.2) * 600,
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(70),
-                      topRight: Radius.circular(70),
-                    ),
-                  ),
+                child: SingleChildScrollView(
                   child: Column(
                     children: [
                       Stack(
                         children: [
                           Padding(
                             padding: EdgeInsets.only(
-                              top: context.getHeight(0.6) * 5,
+                              top: context.getHeight(40),
                               left: context.getHeight(0.2) * 5,
                               right: context.getHeight(0.2) * 5,
                             ),
@@ -103,8 +104,8 @@ class _SignUpBodyState extends State<SignUpBody> {
                                   color: Colors.white,
                                   border: Border.all(color: Colors.grey),
                                   borderRadius: BorderRadius.circular(15)),
-                              height: context.getHeight(0.1) * 390,
-                              width: context.getWidth(0.6) * 330,
+                              height: context.getHeight(290),
+                              width: context.getWidth(360),
                               child: Padding(
                                 padding: const EdgeInsets.only(
                                     top: 30.0, right: 10, left: 10, bottom: 30),
@@ -118,6 +119,7 @@ class _SignUpBodyState extends State<SignUpBody> {
                                               if (val!.isEmpty) {
                                                 return "Cant be empty";
                                               }
+                                              return null;
                                             },
                                             title: Words.userName.tr,
                                             controller: userName),
@@ -127,6 +129,7 @@ class _SignUpBodyState extends State<SignUpBody> {
                                               if (val!.isEmpty) {
                                                 return "Cant be empty";
                                               }
+                                              return null;
                                             },
                                             title: "E-mail",
                                             controller: email),
@@ -136,6 +139,7 @@ class _SignUpBodyState extends State<SignUpBody> {
                                               if (val!.isEmpty) {
                                                 return "Cant be empty";
                                               }
+                                              return null;
                                             },
                                             title: "Password",
                                             controller: password),
@@ -145,6 +149,7 @@ class _SignUpBodyState extends State<SignUpBody> {
                                               if (val!.isEmpty) {
                                                 return "Cant be empty";
                                               }
+                                              return null;
                                             },
                                             title: "PhoneNumber",
                                             controller: phonenumber),
@@ -191,13 +196,13 @@ class _SignUpBodyState extends State<SignUpBody> {
                               if (e.code == 'weak-password') {
                                 Get.defaultDialog(
                                   title: "تنبيه",
-                                  content: Text("Weak Password"),
+                                  content: const Text("Weak Password"),
                                 );
                                 print('The password provided is too weak.');
                               } else if (e.code == 'email-already-in-use') {
                                 Get.defaultDialog(
                                   title: "تنبيه",
-                                  content: Text(
+                                  content: const Text(
                                       "the account already exists for that email"),
                                 );
                                 print(
@@ -217,7 +222,7 @@ class _SignUpBodyState extends State<SignUpBody> {
                               color: Colors.white),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Row(
@@ -238,7 +243,8 @@ class _SignUpBodyState extends State<SignUpBody> {
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: context.getFontSize(13),
-                                  color: Color.fromARGB(255, 204, 64, 35)),
+                                  color:
+                                      const Color.fromARGB(255, 204, 64, 35)),
                             ),
                           ),
                         ],
@@ -246,9 +252,9 @@ class _SignUpBodyState extends State<SignUpBody> {
                     ],
                   ),
                 ),
-              ],
+              ),
             ),
-          ),
+          ],
         ),
       ),
     );
@@ -256,7 +262,7 @@ class _SignUpBodyState extends State<SignUpBody> {
 }
 
 class CustomTextformfield extends StatelessWidget {
-  CustomTextformfield(
+  const CustomTextformfield(
       {super.key,
       required this.title,
       required this.controller,
