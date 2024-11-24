@@ -7,13 +7,13 @@ extension ScreenSize on BuildContext {
   bool get isLandscape =>
       MediaQuery.of(this).orientation == Orientation.landscape;
 
-  // double get H => isLandscape
-  //     ? MediaQuery.sizeOf(this).width
-  //     : MediaQuery.sizeOf(this).height;
+  double get screenHeight => isLandscape
+      ? MediaQuery.sizeOf(this).width
+      : MediaQuery.sizeOf(this).height;
 
-  // double get W => isLandscape
-  //     ? MediaQuery.sizeOf(this).height
-  //     : MediaQuery.sizeOf(this).width;
+  double get screenWidth => isLandscape
+      ? MediaQuery.sizeOf(this).height
+      : MediaQuery.sizeOf(this).width;
 
       
   SizeBuilder get sizeBuilder => SizeBuilder.of(this);

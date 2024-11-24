@@ -69,172 +69,174 @@ class _HomepagebodyState extends State<Homepagebody> {
                   topRight: Radius.circular(50),
                 ),
               ),
-              child: Column(
-                children: [
-                  Stack(
-                    children: [
-                      SizeBuilder(
-                        baseSize: const Size(350, 220),
-                        height: context.getMinSize(220),
-                        width: context.getMinSize(350),
-                        child: Builder(builder: (context) {
-                          return Container(
-                            height: context.sizeBuilder.height,
-                            width: context.sizeBuilder.width,
-                            decoration: BoxDecoration(
-                              boxShadow: [
-                                BoxShadow(
-                                  // spreadRadius: 25,
-                                  blurRadius: 25,
-                                  offset: const Offset(0, 12),
-                                  color: const Color.fromARGB(
-                                    255,
-                                    27,
-                                    48,
-                                    65,
-                                  ).withOpacity(0.7),
-                                )
-                              ],
-                              color: Colors.white,
-                              border: Border.all(color: Colors.grey),
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.only(
-                                left: context.getWidth(6),
-                                right: context.getWidth(6),
-                                top: context.getHeight(10),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Stack(
+                      children: [
+                        SizeBuilder(
+                          baseSize: const Size(350, 220),
+                          height: context.getMinSize(220),
+                          width: context.getMinSize(350),
+                          child: Builder(builder: (context) {
+                            return Container(
+                              height: context.sizeBuilder.height,
+                              width: context.sizeBuilder.width,
+                              decoration: BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                    // spreadRadius: 25,
+                                    blurRadius: 25,
+                                    offset: const Offset(0, 12),
+                                    color: const Color.fromARGB(
+                                      255,
+                                      27,
+                                      48,
+                                      65,
+                                    ).withOpacity(0.7),
+                                  )
+                                ],
+                                color: Colors.white,
+                                border: Border.all(color: Colors.grey),
+                                borderRadius: BorderRadius.circular(15),
                               ),
-                              child: Form(
-                                key: formState,
-                                child: Column(
-                                  children: [
-                                    CustomTextformfield(
-                                        title: "UserName", controller: userName),
-                                    SizedBox(height: context.getHeight(4)),
-                                    CustomTextformfield(
-                                        title: "E-mail", controller: email),
-                                    SizedBox(height: context.getHeight(4)),
-                                    CustomTextformfield(
-                                        title: "Password", controller: password),
-                                    // const SizedBox(height: 10),
-                                  ],
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                  left: context.getWidth(6),
+                                  right: context.getWidth(6),
+                                  top: context.getHeight(10),
+                                ),
+                                child: Form(
+                                  key: formState,
+                                  child: Column(
+                                    children: [
+                                      CustomTextformfield(
+                                          title: "UserName", controller: userName),
+                                      SizedBox(height: context.getHeight(4)),
+                                      CustomTextformfield(
+                                          title: "E-mail", controller: email),
+                                      SizedBox(height: context.getHeight(4)),
+                                      CustomTextformfield(
+                                          title: "Password", controller: password),
+                                      // const SizedBox(height: 10),
+                                    ],
+                                  ),
                                 ),
                               ),
+                            );
+                          }),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: context.getHeight(30),
+                    ),
+                    Text(
+                      "Forgot Password?",
+                      style: TextStyle(
+                          fontSize: context.getFontSize(14),
+                          color: const Color.fromARGB(255, 137, 135, 135),
+                          fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      height: context.getHeight(30),
+                    ),
+                    MaterialButton(
+                      padding: EdgeInsets.symmetric(
+                          vertical: context.getHeight(12),
+                          horizontal: context.getHeight(40)),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18)),
+                      color: const Color.fromARGB(255, 98, 107, 137),
+                      onPressed: () async {
+                        if (userName.text.isEmpty ||
+                            email.text.isEmpty ||
+                            password.text.isEmpty) {
+                          Get.defaultDialog(
+                            title: "تنبيه",
+                            content: const Text("all fields are required"),
+                          );
+                        } else if (password.text.length < 6) {
+                          Get.snackbar(
+                            'Warning',
+                            'Password must be at least 6 characters',
+                            backgroundColor: Colors.red,
+                            colorText: Colors.white,
+                            messageText: const Text(
+                              'Password must be at least 6 characters',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            icon: const Icon(
+                              Icons.warning,
+                              color: Colors.white,
                             ),
                           );
-                        }),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: context.getHeight(30),
-                  ),
-                  Text(
-                    "Forgot Password?",
-                    style: TextStyle(
-                        fontSize: context.getFontSize(14),
-                        color: const Color.fromARGB(255, 137, 135, 135),
-                        fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                    height: context.getHeight(30),
-                  ),
-                  MaterialButton(
-                    padding: EdgeInsets.symmetric(
-                        vertical: context.getHeight(12),
-                        horizontal: context.getHeight(40)),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18)),
-                    color: const Color.fromARGB(255, 98, 107, 137),
-                    onPressed: () async {
-                      if (userName.text.isEmpty ||
-                          email.text.isEmpty ||
-                          password.text.isEmpty) {
-                        Get.defaultDialog(
-                          title: "تنبيه",
-                          content: const Text("all fields are required"),
-                        );
-                      } else if (password.text.length < 6) {
-                        Get.snackbar(
-                          'Warning',
-                          'Password must be at least 6 characters',
-                          backgroundColor: Colors.red,
-                          colorText: Colors.white,
-                          messageText: const Text(
-                            'Password must be at least 6 characters',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          icon: const Icon(
-                            Icons.warning,
-                            color: Colors.white,
-                          ),
-                        );
-                      }
-      
-                      try {
-                        // ignore: unused_local_variable
-                        final credential = await FirebaseAuth.instance
-                            .signInWithEmailAndPassword(
-                          email: email.text,
-                          password: password.text,
-                        );
-                        Get.offAllNamed(RouteApp.mainScreen);
-                      } on FirebaseAuthException catch (e) {
-                        if (e.code == 'user-not-found') {
-                          Get.defaultDialog(
-                            title: "تنبيه",
-                            content: const Text("no user found for that email"),
-                          );
-                          print('No user found for that email.');
-                        } else if (e.code == 'wrong-password') {
-                          Get.defaultDialog(
-                            title: "تنبيه",
-                            content: const Text(
-                                "wrong password provided for that user"),
-                          );
-                          print('Wrong password provided for that user.');
                         }
-                      }
-                    },
-                    child: Text(
-                      "Login",
-                      style: TextStyle(
-                          fontSize: context.getFontSize(16),
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
-                    ),
-                  ),
-                  SizedBox(
-                    height: context.getHeight(20),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Don't have an account ? ",
+                      
+                        try {
+                          // ignore: unused_local_variable
+                          final credential = await FirebaseAuth.instance
+                              .signInWithEmailAndPassword(
+                            email: email.text,
+                            password: password.text,
+                          );
+                          Get.offAllNamed(RouteApp.mainScreen);
+                        } on FirebaseAuthException catch (e) {
+                          if (e.code == 'user-not-found') {
+                            Get.defaultDialog(
+                              title: "تنبيه",
+                              content: const Text("no user found for that email"),
+                            );
+                            print('No user found for that email.');
+                          } else if (e.code == 'wrong-password') {
+                            Get.defaultDialog(
+                              title: "تنبيه",
+                              content: const Text(
+                                  "wrong password provided for that user"),
+                            );
+                            print('Wrong password provided for that user.');
+                          }
+                        }
+                      },
+                      child: Text(
+                        "Login",
                         style: TextStyle(
+                            fontSize: context.getFontSize(16),
                             fontWeight: FontWeight.bold,
-                            fontSize: context.getFontSize(13)),
+                            color: Colors.white),
                       ),
-                      TextButton(
-                        onPressed: () {
-                          Get.offAllNamed("/signUp");
-                        },
-                        child: Text(
-                          "Register",
+                    ),
+                    SizedBox(
+                      height: context.getHeight(20),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Don't have an account ? ",
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: context.getFontSize(13),
-                              color: const Color.fromARGB(255, 204, 64, 35)),
+                              fontSize: context.getFontSize(13)),
                         ),
-                      ),
-                    ],
-                  )
-                ],
+                        TextButton(
+                          onPressed: () {
+                            Get.offAllNamed("/signUp");
+                          },
+                          child: Text(
+                            "Register",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: context.getFontSize(13),
+                                color: const Color.fromARGB(255, 204, 64, 35)),
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
               ),
             ),
           ),

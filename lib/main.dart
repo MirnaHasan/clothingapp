@@ -4,6 +4,7 @@ import 'package:clothes_app/Helper/Log/LogApp.dart';
 import 'package:clothes_app/Helper/Service/initService.dart';
 import 'package:clothes_app/Helper/Translation/LanguageTranslation.dart';
 import 'package:clothes_app/View/MainScreen/MainScreen.dart';
+import 'package:clothes_app/View/Style/ScreenSize.dart/ScreenSize.dart';
 import 'package:clothes_app/View/Style/ScreenSize.dart/SizeBuilder.dart';
 import 'package:clothes_app/View/route/routeApp.dart';
 import 'package:clothes_app/View/screens/homepagescreen.dart';
@@ -54,8 +55,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizeBuilder(
       baseSize: const Size(380, 720),
-      height: context.height,
-      width: context.width,
+      height: context.screenHeight,
+      width: context.screenWidth,
       child: GetMaterialApp(
         locale: Get.deviceLocale,
         debugShowCheckedModeBanner: false,
