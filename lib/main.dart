@@ -60,6 +60,7 @@ class MyApp extends StatelessWidget {
         ),
         translations: Words(),
         initialBinding: MyBindings(),
+        // home: SignUp(),
         home: FirebaseAuth.instance.currentUser == null
             ? const Homepagescreen()
             : const MainScreen(),

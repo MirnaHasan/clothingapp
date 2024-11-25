@@ -126,29 +126,37 @@ class _HomepagebodyState extends State<Homepagebody> {
                       height: context.getHeight(30),
                     ),
                     InkWell(
-                      onTap: () async {
-                        if (email.text == "") {
-                          Get.defaultDialog(
+                      onTap: ()async{
+
+if(email.text==""){
+   Get.defaultDialog(
                             title: "تنبيه",
                             content: const Text(
                               textAlign: TextAlign.center,
                               "الرجاء كتابة بريدك الإلكتروني ثم الضغط على forgot password?",
                             ),
                           );
-                          return;
-                        }
-                        try {
-                          await FirebaseAuth.instance
-                              .sendPasswordResetEmail(email: email.text);
+                          return ;
+
+  
+
+
+}
+try{ await FirebaseAuth.instance.sendPasswordResetEmail(
+                          email: email.text);
                           Get.defaultDialog(
+                           
                             title: "تنبيه",
-                            content: const Text(
+                            content: Text(
                               textAlign: TextAlign.center,
                               "تم إرسال رابط إلى بريدك الإلكتروني لإعادة تعيين كلمة السر ",
                             ),
                           );
-                        } catch (e) {
-                          Get.defaultDialog(
+                          
+                          
+                          }catch(e){
+                             Get.defaultDialog(
+                         
                             title: "فشل",
                             content: const Text(
                               textAlign: TextAlign.center,
@@ -210,20 +218,22 @@ class _HomepagebodyState extends State<Homepagebody> {
                             email: email.text,
                             password: password.text,
                           );
+                          if(credential.user!.emailVerified){
+                            Get.offAllNamed(RouteApp.mainScreen);
+                          }else{
+                             FirebaseAuth.instance.currentUser!.sendEmailVerification();
+                            Get.defaultDialog(
+                              title: "تنبيه",
 
-                          // if (FirebaseAuth
-                          //     .instance.currentUser!.emailVerified) {
-                          //   Get.offAllNamed(RouteApp.mainScreen);
-                          // } else {
-                          //   FirebaseAuth.instance.currentUser!
-                          //       .sendEmailVerification();
-                          //   Get.defaultDialog(
-                          //       title: "تنبيه",
-                          //       content: const Text(
-                          //         textAlign: TextAlign.center,
-                          //         "الرجاء التوجه الى بريدك و الضغط على رابط التحقق من البريد حتى يتم تفعيل حسابك",
-                          //       ));
-                          // }
+                              content:
+                              Text(textAlign: TextAlign.center,
+                              "الرجاء التوجه الى بريدك و الضغط على رابط التحقق من البريد حتى يتم تفعيل حسابك",)
+                               
+                            );
+
+
+                          }
+                          
                         } on FirebaseAuthException catch (e) {
                           // invalid-email
                           //invalid-credential

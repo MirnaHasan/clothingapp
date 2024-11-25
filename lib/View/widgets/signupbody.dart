@@ -187,7 +187,7 @@ class _SignUpBodyState extends State<SignUpBody> {
                                 email: email.text,
                                 password: password.text,
                               );
-                              FirebaseAuth.instance.currentUser!.sendEmailVerification();
+                               FirebaseAuth.instance.currentUser!.sendEmailVerification();
                               Get.offAllNamed("/homepage");
                             } on FirebaseAuthException catch (e) {
                               if (e.code == 'weak-password') {
