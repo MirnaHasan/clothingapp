@@ -54,16 +54,19 @@ class MyApp extends StatelessWidget {
       child: GetMaterialApp(
         locale: Get.deviceLocale,
         debugShowCheckedModeBanner: false,
-        title: Words.appName.tr,
+        title: 'Clothes App',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
         translations: Words(),
         initialBinding: MyBindings(),
         // home: SignUp(),
-        home: FirebaseAuth.instance.currentUser == null
-            ? const Homepagescreen()
-            : const MainScreen(),
+        home: 
+        (FirebaseAuth.instance.currentUser != null 
+        && FirebaseAuth.instance.currentUser!.emailVerified)
+            ?  const MainScreen()
+           
+            :  const Homepagescreen(),
         routes: RouteApp.instance.routes,
       ),
     );
