@@ -1,10 +1,10 @@
+import 'package:clothes_app/Helper/Log/LogApp.dart';
+import 'package:clothes_app/Helper/Translation/LanguageTranslation.dart';
 import 'package:clothes_app/View/Style/ScreenSize.dart/ScreenSize.dart';
 import 'package:clothes_app/View/Style/ScreenSize.dart/SizeBuilder.dart';
 import 'package:clothes_app/View/Style/colorApp/colorsApp.dart';
 import 'package:clothes_app/View/route/routeApp.dart';
-import 'package:clothes_app/View/widgets/signupbody.dart';
 import 'package:clothes_app/Controller/HomeController/homecntroller.dart';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -34,19 +34,19 @@ class _HomepagebodyState extends State<Homepagebody> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       backgroundColor: ColorApp.background,
+      backgroundColor: ColorApp.background,
       body: Column(
         children: [
           SizedBox(height: context.getHeight(60)),
           Text(
-            "Login",
+            Words.login.tr,
             style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
                 fontSize: context.getFontSize(34)),
           ),
           Text(
-            "Welcome To Clothes Store",
+            Words.welcome.tr,
             style: TextStyle(
               fontSize: context.getFontSize(20),
               color: Colors.white,
@@ -72,69 +72,98 @@ class _HomepagebodyState extends State<Homepagebody> {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    Stack(
-                      children: [
-                        SizeBuilder(
-                          baseSize: const Size(350, 220),
-                          height: context.getMinSize(220),
-                          width: context.getMinSize(350),
-                          child: Builder(builder: (context) {
-                            return Container(
-                              height: context.sizeBuilder.height,
-                              width: context.sizeBuilder.width,
-                              decoration: BoxDecoration(
-                                boxShadow: [
-                                  BoxShadow(
-                                    // spreadRadius: 25,
-                                    blurRadius: 25,
-                                    offset: const Offset(0, 12),
-                                    color: const Color.fromARGB(
-                                      255,
-                                      27,
-                                      48,
-                                      65,
-                                    ).withOpacity(0.7),
-                                  )
-                                ],
-                                color: Colors.white,
-                                border: Border.all(color: Colors.grey),
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              child: Padding(
-                                padding: EdgeInsets.only(
-                                  left: context.getWidth(6),
-                                  right: context.getWidth(6),
-                                  top: context.getHeight(10),
-                                ),
-                                child: Column(
-                                  children: [
-                                        SizedBox(height: context.getHeight(8)),
-                                    CustomTextformfield(
-                                        title: "UserName", controller: userName),
-                                    SizedBox(height: context.getHeight(8)),
-                                    CustomTextformfield(
-                                        title: "E-mail", controller: email),
-                                    SizedBox(height: context.getHeight(8)),
-                                    CustomTextformfield(
-                                        title: "Password", controller: password),
-                                    // const SizedBox(height: 10),
-                                  ],
-                                ),
-                              ),
-                            );
-                          }),
-                        ),
-                      ],
+                    SizeBuilder(
+                      baseSize: const Size(350, 220),
+                      height: context.getMinSize(220),
+                      width: context.getMinSize(350),
+                      child: Builder(builder: (context) {
+                        return Container(
+                          height: context.sizeBuilder.height,
+                          width: context.sizeBuilder.width,
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                // spreadRadius: 25,
+                                blurRadius: 25,
+                                offset: const Offset(0, 12),
+                                color: const Color.fromARGB(
+                                  255,
+                                  27,
+                                  48,
+                                  65,
+                                ).withOpacity(0.7),
+                              )
+                            ],
+                            color: Colors.white,
+                            border: Border.all(color: Colors.grey),
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                              left: context.getWidth(6),
+                              right: context.getWidth(6),
+                              top: context.getHeight(10),
+                            ),
+                            child: Column(
+                              children: [
+                                SizedBox(height: context.getHeight(8)),
+                                CustomTextformfield(
+                                    title: Words.userName.tr, controller: userName),
+                                SizedBox(height: context.getHeight(8)),
+                                CustomTextformfield(
+                                    title: Words.email.tr, controller: email),
+                                SizedBox(height: context.getHeight(8)),
+                                CustomTextformfield(
+                                    title: Words.password.tr, controller: password),
+                                // const SizedBox(height: 10),
+                              ],
+                            ),
+                          ),
+                        );
+                      }),
                     ),
                     SizedBox(
                       height: context.getHeight(30),
                     ),
-                    Text(
-                      "Forgot Password?",
-                      style: TextStyle(
-                          fontSize: context.getFontSize(14),
-                          color: const Color.fromARGB(255, 137, 135, 135),
-                          fontWeight: FontWeight.bold),
+                    InkWell(
+                      onTap: () async {
+                        if (email.text == "") {
+                          Get.defaultDialog(
+                            title: "تنبيه",
+                            content: const Text(
+                              textAlign: TextAlign.center,
+                              "الرجاء كتابة بريدك الإلكتروني ثم الضغط على forgot password?",
+                            ),
+                          );
+                          return;
+                        }
+                        try {
+                          await FirebaseAuth.instance
+                              .sendPasswordResetEmail(email: email.text);
+                          Get.defaultDialog(
+                            title: "تنبيه",
+                            content: const Text(
+                              textAlign: TextAlign.center,
+                              "تم إرسال رابط إلى بريدك الإلكتروني لإعادة تعيين كلمة السر ",
+                            ),
+                          );
+                        } catch (e) {
+                          Get.defaultDialog(
+                            title: "فشل",
+                            content: const Text(
+                              textAlign: TextAlign.center,
+                              "الرجاء التاأكد من أن البريد الإلكتروني الذي تم إدخاله صحيح وثم أعد المحاولة",
+                            ),
+                          );
+                        }
+                      },
+                      child: Text(
+                        Words.forgotPassword.tr,
+                        style: TextStyle(
+                            fontSize: context.getFontSize(14),
+                            color: const Color.fromARGB(255, 137, 135, 135),
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                     SizedBox(
                       height: context.getHeight(30),
@@ -173,7 +202,7 @@ class _HomepagebodyState extends State<Homepagebody> {
                             ),
                           );
                         }
-                      
+
                         try {
                           // ignore: unused_local_variable
                           final credential = await FirebaseAuth.instance
@@ -181,12 +210,30 @@ class _HomepagebodyState extends State<Homepagebody> {
                             email: email.text,
                             password: password.text,
                           );
-                          Get.offAllNamed(RouteApp.mainScreen);
+
+                          // if (FirebaseAuth
+                          //     .instance.currentUser!.emailVerified) {
+                          //   Get.offAllNamed(RouteApp.mainScreen);
+                          // } else {
+                          //   FirebaseAuth.instance.currentUser!
+                          //       .sendEmailVerification();
+                          //   Get.defaultDialog(
+                          //       title: "تنبيه",
+                          //       content: const Text(
+                          //         textAlign: TextAlign.center,
+                          //         "الرجاء التوجه الى بريدك و الضغط على رابط التحقق من البريد حتى يتم تفعيل حسابك",
+                          //       ));
+                          // }
                         } on FirebaseAuthException catch (e) {
-                          if (e.code == 'user-not-found') {
+                          // invalid-email
+                          //invalid-credential
+                          logError('message _______ ${e.email}');
+
+                          if (e.code == 'invalid-email') {
                             Get.defaultDialog(
                               title: "تنبيه",
-                              content: const Text("no user found for that email"),
+                              content:
+                                  const Text("no user found for that email"),
                             );
                             print('No user found for that email.');
                           } else if (e.code == 'wrong-password') {
@@ -200,7 +247,7 @@ class _HomepagebodyState extends State<Homepagebody> {
                         }
                       },
                       child: Text(
-                        "Login",
+                       Words.login.tr,
                         style: TextStyle(
                             fontSize: context.getFontSize(16),
                             fontWeight: FontWeight.bold,
@@ -214,17 +261,17 @@ class _HomepagebodyState extends State<Homepagebody> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Don't have an account ? ",
+                          Words.dontHaveAccount.tr,
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: context.getFontSize(13)),
                         ),
                         TextButton(
                           onPressed: () {
-                            Get.offAllNamed("/signUp");
+                            Get.offAllNamed(RouteApp.signUp);
                           },
                           child: Text(
-                            "Register",
+                            Words.register.tr,
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: context.getFontSize(13),
@@ -263,7 +310,6 @@ class _CustomTextformfieldState extends State<CustomTextformfield> {
     return TextFormField(
       controller: widget.controller,
       decoration: InputDecoration(
-  
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: BorderSide(width: 1, color: ColorApp.background),

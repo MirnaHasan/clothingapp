@@ -45,7 +45,7 @@ class _SignUpBodyState extends State<SignUpBody> {
         child: Column(
           children: [
             Text(
-              "SignUp",
+              Words.register.tr,
               style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -187,7 +187,8 @@ class _SignUpBodyState extends State<SignUpBody> {
                                 email: email.text,
                                 password: password.text,
                               );
-                              Get.offAllNamed("/mainScreen");
+                              FirebaseAuth.instance.currentUser!.sendEmailVerification();
+                              Get.offAllNamed("/homepage");
                             } on FirebaseAuthException catch (e) {
                               if (e.code == 'weak-password') {
                                 Get.defaultDialog(
