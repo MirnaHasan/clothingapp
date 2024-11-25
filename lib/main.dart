@@ -54,13 +54,12 @@ class MyApp extends StatelessWidget {
       child: GetMaterialApp(
         locale: Get.deviceLocale,
         debugShowCheckedModeBanner: false,
-        title: 'Clothes App',
+        title: Words.appName.tr,
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
         translations: Words(),
         initialBinding: MyBindings(),
-        // home: SignUp(),
         home: FirebaseAuth.instance.currentUser == null
             ? const Homepagescreen()
             : const MainScreen(),
