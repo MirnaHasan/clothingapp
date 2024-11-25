@@ -135,34 +135,24 @@ class _HomepagebodyState extends State<Homepagebody> {
                       height: context.getHeight(30),
                     ),
                     InkWell(
-                      onTap: ()async{
-
-if(email.text==""){
-   Get.defaultDialog(
+                      onTap: ()async{if(email.text==""){Get.defaultDialog(
                             title: "تنبيه",
                             content: Text(
                               textAlign: TextAlign.center,
                             "الرجاء كتابة بريدك الإلكتروني ثم الضغط على forgot password?",
                             ),
                           );
-                          return ;
-
-  
-
-
-}
-try{ await FirebaseAuth.instance.sendPasswordResetEmail(
+                          return ;}
+                        try{ await FirebaseAuth.instance.sendPasswordResetEmail(
                           email: email.text);
                           Get.defaultDialog(
-                           
-                            title: "تنبيه",
+                           title: "تنبيه",
                             content: Text(
                               textAlign: TextAlign.center,
                               "تم إرسال رابط إلى بريدك الإلكتروني لإعادة تعيين كلمة السر ",
                             ),
                           );
-                          
-                          
+                  
                           }catch(e){
                              Get.defaultDialog(
                          
@@ -232,18 +222,18 @@ try{ await FirebaseAuth.instance.sendPasswordResetEmail(
                             email: email.text,
                             password: password.text,
                           );
-                          if(FirebaseAuth.instance.currentUser!.emailVerified){
+                          if(credential.user!.emailVerified){
                             Get.offAllNamed(RouteApp.mainScreen);
                           }else{
                              FirebaseAuth.instance.currentUser!.sendEmailVerification();
-                            Get.defaultDialog(
-                              title: "تنبيه",
+                            //  Get.defaultDialog(
+                            //   title: "تنبيه",
 
-                              content:
-                              Text(textAlign: TextAlign.center,
-                              "الرجاء التوجه الى بريدك و الضغط على رابط التحقق من البريد حتى يتم تفعيل حسابك",)
+                            //   content:
+                            //   Text(textAlign: TextAlign.center,
+                            //   "الرجاء التوجه الى بريدك و الضغط على رابط التحقق من البريد حتى يتم تفعيل حسابك",)
                                
-                            );
+                            // );
 
 
                           }
