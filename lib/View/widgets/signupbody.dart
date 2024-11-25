@@ -109,52 +109,49 @@ class _SignUpBodyState extends State<SignUpBody> {
                               child: Padding(
                                 padding: const EdgeInsets.only(
                                     top: 30.0, right: 10, left: 10, bottom: 30),
-                                child: Form(
-                                  key: formState,
-                                  child: SingleChildScrollView(
-                                    child: Column(
-                                      children: [
-                                        CustomTextformfield(
-                                            validator: (val) {
-                                              if (val!.isEmpty) {
-                                                return "Cant be empty";
-                                              }
-                                              return null;
-                                            },
-                                            title: Words.userName.tr,
-                                            controller: userName),
-                                        const SizedBox(height: 10),
-                                        CustomTextformfield(
-                                            validator: (val) {
-                                              if (val!.isEmpty) {
-                                                return "Cant be empty";
-                                              }
-                                              return null;
-                                            },
-                                            title: "E-mail",
-                                            controller: email),
-                                        const SizedBox(height: 10),
-                                        CustomTextformfield(
-                                            validator: (val) {
-                                              if (val!.isEmpty) {
-                                                return "Cant be empty";
-                                              }
-                                              return null;
-                                            },
-                                            title: "Password",
-                                            controller: password),
-                                        const SizedBox(height: 10),
-                                        CustomTextformfield(
-                                            validator: (val) {
-                                              if (val!.isEmpty) {
-                                                return "Cant be empty";
-                                              }
-                                              return null;
-                                            },
-                                            title: "PhoneNumber",
-                                            controller: phonenumber),
-                                      ],
-                                    ),
+                                child: SingleChildScrollView(
+                                  child: Column(
+                                    children: [
+                                      CustomTextformfield(
+                                          validator: (val) {
+                                            if (val!.isEmpty) {
+                                              return "Cant be empty";
+                                            }
+                                            return null;
+                                          },
+                                          title: Words.userName.tr,
+                                          controller: userName),
+                                      const SizedBox(height: 10),
+                                      CustomTextformfield(
+                                          validator: (val) {
+                                            if (val!.isEmpty) {
+                                              return "Cant be empty";
+                                            }
+                                            return null;
+                                          },
+                                          title: "E-mail",
+                                          controller: email),
+                                      const SizedBox(height: 14),
+                                      CustomTextformfield(
+                                          validator: (val) {
+                                            if (val!.isEmpty) {
+                                              return "Cant be empty";
+                                            }
+                                            return null;
+                                          },
+                                          title: "Password",
+                                          controller: password),
+                                      const SizedBox(height: 10),
+                                      CustomTextformfield(
+                                          validator: (val) {
+                                            if (val!.isEmpty) {
+                                              return "Cant be empty";
+                                            }
+                                            return null;
+                                          },
+                                          title: "PhoneNumber",
+                                          controller: phonenumber),
+                                    ],
                                   ),
                                 ),
                               ),

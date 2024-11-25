@@ -48,9 +48,6 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // HomeController controller = Get.put(HomeController());
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return SizeBuilder(
@@ -68,7 +65,7 @@ class MyApp extends StatelessWidget {
         initialBinding: MyBindings(),
         // home: SignUp(),
         home: FirebaseAuth.instance.currentUser == null
-            ? Homepagescreen()
+            ? const Homepagescreen()
             : const MainScreen(),
         routes: RouteApp.instance.routes,
       ),

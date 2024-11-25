@@ -106,21 +106,19 @@ class _HomepagebodyState extends State<Homepagebody> {
                                   right: context.getWidth(6),
                                   top: context.getHeight(10),
                                 ),
-                                child: Form(
-                                  key: formState,
-                                  child: Column(
-                                    children: [
-                                      CustomTextformfield(
-                                          title: "UserName", controller: userName),
-                                      SizedBox(height: context.getHeight(4)),
-                                      CustomTextformfield(
-                                          title: "E-mail", controller: email),
-                                      SizedBox(height: context.getHeight(4)),
-                                      CustomTextformfield(
-                                          title: "Password", controller: password),
-                                      // const SizedBox(height: 10),
-                                    ],
-                                  ),
+                                child: Column(
+                                  children: [
+                                        SizedBox(height: context.getHeight(8)),
+                                    CustomTextformfield(
+                                        title: "UserName", controller: userName),
+                                    SizedBox(height: context.getHeight(8)),
+                                    CustomTextformfield(
+                                        title: "E-mail", controller: email),
+                                    SizedBox(height: context.getHeight(8)),
+                                    CustomTextformfield(
+                                        title: "Password", controller: password),
+                                    // const SizedBox(height: 10),
+                                  ],
                                 ),
                               ),
                             );
@@ -246,7 +244,7 @@ class _HomepagebodyState extends State<Homepagebody> {
   }
 }
 
-class CustomTextformfield extends StatelessWidget {
+class CustomTextformfield extends StatefulWidget {
   const CustomTextformfield({
     super.key,
     required this.title,
@@ -256,10 +254,16 @@ class CustomTextformfield extends StatelessWidget {
   final TextEditingController controller;
 
   @override
+  State<CustomTextformfield> createState() => _CustomTextformfieldState();
+}
+
+class _CustomTextformfieldState extends State<CustomTextformfield> {
+  @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: controller,
+      controller: widget.controller,
       decoration: InputDecoration(
+  
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: BorderSide(width: 1, color: ColorApp.background),
@@ -269,7 +273,7 @@ class CustomTextformfield extends StatelessWidget {
           borderSide: BorderSide(width: 1, color: ColorApp.background),
         ),
         label: Text(
-          title,
+          widget.title,
           style: TextStyle(
               fontSize: context.getFontSize(13),
               color: ColorApp.background,
