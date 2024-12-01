@@ -66,49 +66,52 @@ class Clothingitems extends StatelessWidget {
         Container(
           height: 230,
           width: 400,
-          child: Card(
-            shadowColor: const Color.fromARGB(255, 0, 0, 0),
-            shape: RoundedRectangleBorder(
-              side: const BorderSide(
-                color: Color.fromARGB(255, 24, 24, 25),
-                width: 2,
+          child: InkWell(
+            onTap: (){},
+            child: Card(
+              shadowColor: const Color.fromARGB(255, 0, 0, 0),
+              shape: RoundedRectangleBorder(
+                side: const BorderSide(
+                  color: Color.fromARGB(255, 24, 24, 25),
+                  width: 2,
+                ),
+                borderRadius: BorderRadius.circular(20),
               ),
-              borderRadius: BorderRadius.circular(20),
-            ),
-            elevation: 35,
-            child: Row(
-              //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
-                  child: Image.network(
-                    imageUrl,
-                    height: context.getHeight(200),
-                    width: context.getWidth(250),
-                    fit: BoxFit.cover,
+              elevation: 35,
+              child: Row(
+                //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: Image.network(
+                      imageUrl,
+                      height: context.getHeight(200),
+                      width: context.getWidth(250),
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                ),
-                Container(
-                  alignment: Alignment.center,
-                  height: context.getHeight(40),
-                  width: context.getWidth(90),
-                  decoration: const BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color.fromARGB(255, 192, 162, 162),
-                        offset: Offset(1, 12),
-                        blurRadius: 45,
-                      )
-                    ],
+                  Container(
+                    alignment: Alignment.center,
+                    height: context.getHeight(40),
+                    width: context.getWidth(90),
+                    decoration: const BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color.fromARGB(255, 192, 162, 162),
+                          offset: Offset(1, 12),
+                          blurRadius: 45,
+                        )
+                      ],
+                    ),
+                    child: Text(
+                      title,
+                      style: TextStyle(
+                          fontSize: context.getFontSize(20), color: Colors.black),
+                    ),
                   ),
-                  child: Text(
-                    title,
-                    style: TextStyle(
-                        fontSize: context.getFontSize(20), color: Colors.black),
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
