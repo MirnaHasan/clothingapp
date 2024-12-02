@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:clothes_app/View/Style/ScreenSize.dart/ScreenSize.dart';
+import 'package:clothes_app/View/route/routeApp.dart';
 
 import 'package:clothes_app/model/clothingitemdata.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -67,7 +68,9 @@ class Clothingitems extends StatelessWidget {
           height: 230,
           width: 400,
           child: InkWell(
-            onTap: (){},
+            onTap: (){
+              Get.toNamed(RouteApp.clothingCategory);
+            },
             child: Card(
               shadowColor: const Color.fromARGB(255, 0, 0, 0),
               shape: RoundedRectangleBorder(
