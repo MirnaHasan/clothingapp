@@ -3,9 +3,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 class Homecntroller extends GetxController{
+  String? title;
  
   @override
   void onInit() {
+   
   FirebaseAuth.instance
   .authStateChanges()
   .listen((User? user) {

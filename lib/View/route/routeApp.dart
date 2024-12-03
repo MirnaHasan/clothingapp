@@ -21,6 +21,6 @@ class RouteApp {
     homepage: (context) =>  Homepagebody(),
     mainScreen : (context) => const MainScreen(),
     signUp :(context) => SignUp(), 
-    clothingCategory:(context)=>  const Clothingcategory(),
+    clothingCategory:(context)=>   Clothingcategory(),
   };
 }

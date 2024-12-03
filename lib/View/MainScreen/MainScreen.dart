@@ -69,7 +69,9 @@ class Clothingitems extends StatelessWidget {
           width: 400,
           child: InkWell(
             onTap: (){
-              Get.toNamed(RouteApp.clothingCategory);
+              Get.toNamed(RouteApp.clothingCategory , 
+              arguments: ClothingitemData
+              );
             },
             child: Card(
               shadowColor: const Color.fromARGB(255, 0, 0, 0),
