@@ -1,6 +1,7 @@
 
 
 import 'package:clothes_app/Controller/HomeController/homecntroller.dart';
+import 'package:clothes_app/View/widgets/clothingcategorybody.dart';
 import 'package:clothes_app/model/clothingitemdata.dart';
 import 'package:clothes_app/model/clothingitemdata.dart';
 
@@ -16,14 +17,14 @@ class Clothingcategory extends StatelessWidget {
 // final  Homecntroller cont= Get.put(Homecntroller());
 final argument = Get.arguments;
 final title = Get.arguments["title"];
-final imageUrl = Get.arguments["image_url"];
+final imageUrl = Get.arguments["imageUrl"];
 final id = Get.arguments["id"];
 
 
   @override
   
   Widget build(BuildContext context) {
-      final filterOutfits = outfitData.where((element) {
+      final  filterOutfits = outfitData.where((element) {
     return element.categories.contains(id);
    } ,).toList();
 
@@ -36,13 +37,14 @@ final id = Get.arguments["id"];
       ListView.builder(
         itemCount: filterOutfits.length,
         itemBuilder: (context,i){
-          return Text("${filterOutfits[i].title}");
+          return ClothingCategoryBody(
+            name: filterOutfits[i].title ,
+           imageUrl:filterOutfits[i].imageUrl,
+            price:filterOutfits[i].price ,
+             size: filterOutfits[i].size 
+             );
+        })
 
-      }) 
-
-          
-      
-      
     );
   }
 }

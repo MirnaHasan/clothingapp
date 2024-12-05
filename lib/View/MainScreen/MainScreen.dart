@@ -74,7 +74,7 @@ class Clothingitems extends StatelessWidget {
             onTap: (){
               Get.toNamed(RouteApp.clothingCategory , 
               arguments: {
-                "title":title , 
+                "title":title, 
                 "imageUrl":imageUrl,
                 "id":id
                 
