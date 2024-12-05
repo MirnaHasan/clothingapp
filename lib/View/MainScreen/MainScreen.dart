@@ -47,7 +47,8 @@ class MainScreen extends StatelessWidget {
               itemBuilder: (context, i) {
                 return Clothingitems(
                     title: ClothingitemData[i].title,
-                    imageUrl: ClothingitemData[i].imageUrl);
+                    imageUrl: ClothingitemData[i].imageUrl,
+                     id: ClothingitemData[i].id);
               }),
         ],
       )),
@@ -58,7 +59,9 @@ class MainScreen extends StatelessWidget {
 class Clothingitems extends StatelessWidget {
   final String title;
   final String imageUrl;
-  Clothingitems({super.key, required this.title, required this.imageUrl});
+  final String id;
+  
+  Clothingitems({super.key, required this.title, required this.imageUrl, required this.id});
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +73,12 @@ class Clothingitems extends StatelessWidget {
           child: InkWell(
             onTap: (){
               Get.toNamed(RouteApp.clothingCategory , 
-              arguments: ClothingitemData
+              arguments: {
+                "title":title , 
+                "imageUrl":imageUrl,
+                "id":id
+                
+              }
               );
             },
             child: Card(
