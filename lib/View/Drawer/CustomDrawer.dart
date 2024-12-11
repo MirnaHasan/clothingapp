@@ -10,51 +10,46 @@ class CustomDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<Clothingcategorycontroller>(
-        init: Clothingcategorycontroller(),
-        builder: (cartProvider) {
-          return Drawer(
-            backgroundColor: Colors.yellow.shade100,
-            elevation: 4,
-            width: context.getWidth(280),
-            child: Column(children: [
-              Expanded(
-                child: ListView.builder(
-                  itemCount: 3,
-                  itemBuilder: (context, index) {
-                    // final product = cartProvider.carts[index];
-                    return ListTile(
-                      title: const Text('product.name'),
-                      subtitle: const Text('ahmed'
-                          // '${product.price.toString()}  x${product.quantity}',
-                          ),
-                      leading: IconButton(
-                        icon: const Icon(Icons.remove),
-                        onPressed: () {
-                          // cartProvider.removeCountFromCart(
-                          // Cartmodels(
-                          //   name: product.name,
-                          //   price: product.price/product.quantity,
-                          //   quantity: 1,
-                          // ),
-                          // );
-                        },
-                      ),
-                      trailing: IconButton(
-                        icon: const Icon(Icons.delete),
-                        onPressed: () {
-                          // cartProvider.removeFromCart(index);
-                        },
-                      ),
-                    );
-                  },
-                ),
+      init: Clothingcategorycontroller(),
+      builder: (cartProvider) {
+        return Drawer(
+          backgroundColor: Colors.yellow.shade100,
+          elevation: 4,
+          width: context.getWidth(280),
+          child: Column(children: [
+            Expanded(
+              child: ListView.builder(
+                itemCount: cartProvider.carts.length,
+                itemBuilder: (context, index) {
+                  // final product = cartProvider.carts[index];
+                  return ListTile(
+                    title: Text(cartProvider.carts[index].title),
+                    subtitle: Text(cartProvider.carts[index].price.toString()),
+                    leading: IconButton(
+                      icon: const Icon(Icons.remove),
+                      onPressed: () {
+                        cartProvider.removeFromCart(
+                          index,
+                        );
+                      },
+                    ),
+                    trailing: IconButton(
+                      icon: const Icon(Icons.delete),
+                      onPressed: () {
+                        // cartProvider.removeFromCart(index);
+                      },
+                    ),
+                  );
+                },
               ),
-              Text('${Words.total.tr}  5000\$'),
-              SizedBox(
-                height: context.getHeight(1),
-              )
-            ]),
-          );
-        });
+            ),
+            Text('${Words.total.tr} : ${cartProvider.getAllPriceCart()} \$ '),
+            SizedBox(
+              height: context.getHeight(1),
+            )
+          ]),
+        );
+      },
+    );
   }
 }
