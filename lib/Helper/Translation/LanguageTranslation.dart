@@ -11,10 +11,12 @@ class Words implements Translations {
   static const email = 'email';
   static const phonenumber = 'PhoneNumber';
   static const dontHaveAccount = 'dontHaveAccount';
+  static const total = 'total';
 
   @override
   Map<String, Map<String, String>> get keys => {
         'ar': {
+          total : 'المجموع',
           dontHaveAccount : 'ليس لديك حساب ؟',
           appName: 'متجر ملابس',
           login: 'تسجيل الدخول',
@@ -27,6 +29,7 @@ class Words implements Translations {
            phonenumber:"رقم الهاتف"
         },
         'en': {
+          total : 'Total',
           dontHaveAccount : "Don't have an account ?",
           appName: "Clothes Store",
           login: 'Login',

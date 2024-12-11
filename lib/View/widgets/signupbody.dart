@@ -208,8 +208,9 @@ class _SignUpBodyState extends State<SignUpBody> {
                             } catch (e) {
                               print(e);
                             }
-                          } else
+                          } else {
                             print("not valid");
+                          }
                         },
                         child: Text(
                           "sign up",

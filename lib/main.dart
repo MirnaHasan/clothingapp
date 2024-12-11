@@ -10,8 +10,10 @@ import 'package:clothes_app/View/route/routeApp.dart';
 import 'package:clothes_app/View/screens/homepagescreen.dart';
 
 import 'package:clothes_app/Helper/Binding/mybindings.dart';
+import 'package:device_preview/device_preview.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -25,9 +27,10 @@ Future<void> main() async {
 
       runApp(
         const MyApp(),
+      
         // DevicePreview(
         //   enabled: !kReleaseMode,
-        //   builder: (context) =>  MyApp(), // Wrap your app
+        //   builder: (context) => const  MyApp(), // Wrap your app
         // ),
       );
     },
@@ -62,11 +65,11 @@ class MyApp extends StatelessWidget {
         initialBinding: MyBindings(),
         // home: SignUp(),
         home: 
-        (FirebaseAuth.instance.currentUser != null 
-        && FirebaseAuth.instance.currentUser!.emailVerified)
-            ?  const MainScreen()
+        // (FirebaseAuth.instance.currentUser != null 
+        // && FirebaseAuth.instance.currentUser!.emailVerified)
+              const MainScreen(),
            
-            :  const Homepagescreen(),
+            // :  const Homepagescreen(),
         routes: RouteApp.instance.routes,
       ),
     );

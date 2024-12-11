@@ -1,8 +1,6 @@
 import 'dart:ui';
-
 import 'package:clothes_app/View/Style/ScreenSize.dart/ScreenSize.dart';
 import 'package:clothes_app/View/route/routeApp.dart';
-
 import 'package:clothes_app/model/clothingitemdata.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -48,7 +46,7 @@ class MainScreen extends StatelessWidget {
                 return Clothingitems(
                     title: ClothingitemData[i].title,
                     imageUrl: ClothingitemData[i].imageUrl,
-                     id: ClothingitemData[i].id);
+                    id: ClothingitemData[i].id);
               }),
         ],
       )),
@@ -60,25 +58,29 @@ class Clothingitems extends StatelessWidget {
   final String title;
   final String imageUrl;
   final String id;
-  
-  Clothingitems({super.key, required this.title, required this.imageUrl, required this.id});
+
+  const Clothingitems(
+      {super.key,
+      required this.title,
+      required this.imageUrl,
+      required this.id});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          height: 230,
-          width: 400,
+        SizedBox(
+          height: context.getHeight(190),
+          width: context.getWidth(360),
           child: InkWell(
-            onTap: (){
-              Get.toNamed(RouteApp.clothingCategory , 
-              arguments: {
-                "title":title, 
-                "imageUrl":imageUrl,
-                "id":id
-                
-              }
+            onTap: () {
+              Get.toNamed(
+                RouteApp.clothingCategory,
+                arguments: {
+                  "title": title,
+                  "imageUrl": imageUrl,
+                  "id": id,
+                },
               );
             },
             child: Card(
@@ -93,7 +95,7 @@ class Clothingitems extends StatelessWidget {
               elevation: 35,
               child: Row(
                 //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            
+
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(20),
@@ -120,7 +122,8 @@ class Clothingitems extends StatelessWidget {
                     child: Text(
                       title,
                       style: TextStyle(
-                          fontSize: context.getFontSize(20), color: Colors.black),
+                          fontSize: context.getFontSize(20),
+                          color: Colors.black),
                     ),
                   ),
                 ],
@@ -128,8 +131,8 @@ class Clothingitems extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(
-          height: 40,
+        SizedBox(
+          height: context.getHeight(20),
         ),
       ],
     );

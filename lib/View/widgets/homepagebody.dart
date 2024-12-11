@@ -147,7 +147,7 @@ try{ await FirebaseAuth.instance.sendPasswordResetEmail(
                           Get.defaultDialog(
                            
                             title: "تنبيه",
-                            content: Text(
+                            content: const Text(
                               textAlign: TextAlign.center,
                               "تم إرسال رابط إلى بريدك الإلكتروني لإعادة تعيين كلمة السر ",
                             ),
@@ -226,7 +226,7 @@ try{ await FirebaseAuth.instance.sendPasswordResetEmail(
                               title: "تنبيه",
 
                               content:
-                              Text(textAlign: TextAlign.center,
+                              const Text(textAlign: TextAlign.center,
                               "الرجاء التوجه الى بريدك و الضغط على رابط التحقق من البريد حتى يتم تفعيل حسابك",)
                                
                             );

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ClothingCategoryBody extends StatelessWidget {
-   ClothingCategoryBody({super.key, required this.name, required this.imageUrl, required this.price, required this.size});
+   const ClothingCategoryBody({super.key, required this.name, required this.imageUrl, required this.price, required this.size});
   final String name ; 
   final String imageUrl;
   final String price ; 
@@ -19,8 +19,8 @@ class ClothingCategoryBody extends StatelessWidget {
 
 
 child:  Card(
-  shadowColor: Color.fromARGB(255, 57, 29, 142),
-  color: Color.fromARGB(255, 227, 222, 198),
+  shadowColor: const Color.fromARGB(255, 57, 29, 142),
+  color: const Color.fromARGB(255, 227, 222, 198),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
             ),
@@ -28,7 +28,7 @@ child:  Card(
               children: [
                 Expanded(
                   child: ClipRRect(
-                    borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
+                    borderRadius: const BorderRadius.vertical(top: Radius.circular(10)),
                     child: Image.network(imageUrl,
                    
                       fit: BoxFit.cover,
@@ -42,7 +42,7 @@ child:  Card(
                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Text(name, 
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 20, 
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
@@ -51,7 +51,7 @@ child:  Card(
                       onPressed: (){
                         
                       }, 
-                     icon: Icon(
+                     icon: const Icon(
                   
                       Icons.add, 
                      color: Color.fromARGB(255, 23, 3, 83),
