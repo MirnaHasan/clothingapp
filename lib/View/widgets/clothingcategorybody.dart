@@ -16,29 +16,59 @@ class ClothingCategoryBody extends StatelessWidget {
      onTap: () {
        
      },
-     child: Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(30),
-      ),
-      elevation: 20,
-      margin: EdgeInsets.all(8),
-      child: Column(
-        children: [
-          Stack(children: [
-            ClipRRect(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(16),
-                topRight: Radius.circular(16),
-              ),
-              child: Image.network(imageUrl, 
-              height: 500,
-              width: double.infinity,
-              fit: BoxFit.cover,),
+
+
+child:  Card(
+  shadowColor: Color.fromARGB(255, 57, 29, 142),
+  color: Color.fromARGB(255, 227, 222, 198),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
             ),
-          ],)
-        ],
-      ),
-     ),
+            child: Column(
+              children: [
+                Expanded(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
+                    child: Image.network(imageUrl,
+                   
+                      fit: BoxFit.cover,
+                      width: double.infinity,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 1.0),
+                  child: Row(
+                   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Text(name, 
+                      style: TextStyle(
+                        fontSize: 20, 
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),),
+                     IconButton(
+                      onPressed: (){
+                        
+                      }, 
+                     icon: Icon(
+                  
+                      Icons.add, 
+                     color: Color.fromARGB(255, 23, 3, 83),
+                     size: 30,)), 
+                    
+                      
+                    ],
+                  ),
+                ),
+              ],
+            ),
+
+
+     
+
+          ),
+
     );
   }
 }
